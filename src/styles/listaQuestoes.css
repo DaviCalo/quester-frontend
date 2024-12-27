@@ -1,0 +1,528 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap");
+
+/* Reset e configurações iniciais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Sora", sans-serif;
+  background: #e8e2ee;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  min-width: 320px; /* Garantir mínimo para dispositivos móveis */
+  overflow: hidden;
+}
+
+.container-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+#profile-photo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 5vw;
+  min-width: 50px;
+  height: 100%;
+  background-color: #f8f8f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2vh 0;
+  transition: width 0.3s ease;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidebar-item {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.sidebar-item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-icon {
+  background-color: #d9d9d9;
+  width: 80%;
+  height: 15%;
+  border-radius: 10px;
+}
+
+.select-icon::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 5px;
+  border-radius: 10px;
+  background-color: #00bfa6;
+}
+
+.menu:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+}
+
+.menu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 3px;
+  border-radius: 50px;
+  background-color: transparent;
+  transition: background-color 0.3s, top 0.3s;
+}
+
+.menu:hover::before {
+  background-color: #ff8c40;
+}
+
+.user-option {
+  width: 100%;
+  padding: 0 1em;
+  margin: 1em auto;
+  cursor: pointer;
+}
+
+main {
+  padding: 2vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  margin-left: 6vw; /* Espaço flexível baseado no tamanho da sidebar */
+  transition: margin-left 0.3s ease;
+}
+
+
+.titulo {
+  width: 100%;
+  padding: 0 9.2vw;
+  font-size: 28px;
+  margin: 20px 0;
+  text-align: start;
+  color: #6e4fc8;
+}
+
+.top-bar input {
+  width: 100%;
+  min-width: 350px;
+  height: 8vh;
+  padding: 15px 50px 15px 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #333;
+  outline: none;
+  font-weight: bold;
+  font-family: "Montserrat";
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+}
+
+.tags-questao-feita {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.tags-questao-feita p {
+  padding: 1px;
+  border: 2px solid #5e5d5d;
+  font-size: 16px;
+  border-radius: 5px;
+  font-weight: 500;
+  margin: 5px 5px;
+  color: #5e5d5d;
+}
+
+.tags-questao-feita h4 {
+  border-radius: 5px;
+  font-weight: bold;
+  color: #6e4fc8;
+}
+
+.card-questao-aberta,
+.card-questao-fechada {
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  margin: 20px 0;
+}
+
+.card-questao-aberta-feita,
+.card-questao-fechada-feita {
+  width: 73.5vw;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  margin: 20px 0;
+}
+
+.pergunta-aberta,
+.resposta {
+  margin: 15px 0;
+}
+
+.pergunta-aberta,
+.resposta,
+.criar-tag {
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid black;
+  outline: none;
+  width: 100%;
+  font-size: 20px;
+}
+
+.respostaPronta {
+  padding-bottom: 10px;
+}
+
+.tags {
+  display: flex;
+  margin: 15px 0;
+  color: #6e4fc8;
+}
+.tags input {
+  padding-left: 5px;
+}
+
+.escolher-tipo-pergunta {
+  display: flex;
+  gap: 10px;
+}
+
+.escolher-tipo-pergunta select {
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #6e4fc8;
+  outline: none;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  border: 2px solid #6e4fc8;
+  font-style: italic;
+  font-weight: 500;
+  font-family: "Montserrat";
+}
+
+.escolher-tipo-pergunta optgroup {
+  font-weight: 400;
+}
+
+.alternativa {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  font-size: 20px;
+  position: relative;
+}
+
+.used-matches {
+  display: flex;
+  align-items: center;
+}
+
+.used-matches p {
+  font-weight: 400;
+  margin: 5px 5px;
+  color: #5e5d5d;
+  font-size: 16px;
+}
+
+.used-matches h4 {
+  color: #6e4fc8;
+}
+
+.fixed-box {
+  position: absolute;
+  top: 25vh;
+  right: 5.5vw;
+  width: 60px;
+  height: 225px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 5;
+}
+
+.fixed-box img {
+  cursor: pointer;
+  max-width: 40px;
+}
+
+.card-questao-aberta-feita h3,
+.card-questao-fechada-feita h3 {
+  font-size: 24px;
+}
+
+.card-questao-aberta-feita p,
+.card-questao-fechada-feita p {
+  margin-bottom: 5px;
+}
+
+.card-questao-aberta-feita span,
+.card-questao-fechada-feita span {
+  font-size: 20px;
+}
+
+.respostaCurta {
+  margin: 5px 0 20px 0;
+}
+
+.radio-input:checked + p {
+  font-weight: bold;
+  color: red;
+}
+
+.delete-button {
+  width: 50px;
+  padding: 5px;
+  background-color: rgb(234, 234, 234);
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+
+  cursor: pointer;
+}
+
+.card-questao-aberta-feita,
+.card-questao-fechada-feita {
+  position: relative;
+}
+
+.question-checkbox {
+  display: none;
+}
+
+.checkbox-label {
+  display: inline-block;
+  width: 30px; 
+  height: 30px;
+  background-color: #f0f0f0; 
+  border: 2px solid #ccc; 
+  border-radius: 4px; 
+  position: absolute; 
+  top: 10px; 
+  right: 10px; 
+  cursor: pointer;
+}
+
+
+.question-checkbox:checked + .checkbox-label {
+  background-color: #4caf50; 
+  border-color: #4caf50; 
+}
+
+
+.question-checkbox:checked + .checkbox-label::after {
+  content: "";
+  position: absolute;
+  top: 10%; 
+  left: 8px; 
+  width: 8px; 
+  height: 16px; 
+  border: solid white; 
+  border-width: 0 2px 2px 0; 
+  transform: rotate(45deg); 
+}
+
+.editarQuestao {
+  padding: 15px;
+  background-color: #717171;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 24px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+}
+
+.editarQuestao:hover {
+  background-color: #333;
+}
+
+.close {
+  color: #aaa;
+  position: absolute; 
+  top: 15px;
+  right: 15px; 
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: ease-in-out 200ms;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed; 
+  z-index: 500; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100vh; 
+  overflow: auto; 
+  background-color: rgb(0, 0, 0); 
+  background-color: rgba(0, 0, 0, 0.4); 
+}
+
+.modal-content {
+  background-color: #fefefe; 
+  margin: 10% auto; 
+  padding: 60px; 
+  border: 1px solid #888; 
+  width: 80%; 
+  border-radius: 10px;
+  position: relative; 
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content input {
+  font-family: "Montserrat";
+}
+
+.modal-content button {
+  width: 100%;
+  max-width: 230px;
+  display: inline-block; /* Certifique-se de que o botão é exibido */
+  height: 5vh;
+  background-color: #ff6600;
+  color: white; /* Texto branco */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Muda o cursor para pointer */
+  margin-top: 10px; /* Espaçamento acima do botão */
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 20px;
+  position: absolute; /* Muda para posição absoluta */
+
+  bottom: 10px; /* Distância do fundo do modal */
+  right: 56px; /* Distância da esquerda do modal */
+}
+
+.modal-content button:hover {
+  background-color: #ff6600; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilos do modal de exclusão */
+.delete-modal {
+  display: none; /* Oculta o modal por padrão */
+  position: fixed; /* Fica em cima de tudo */
+  z-index: 500; /* Fica acima de outros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Largura total */
+  height: 100vh; /* Altura total */
+  overflow: auto; /* Adiciona rolagem se necessário */
+  background-color: rgba(0, 0, 0, 0.4); /* Fundo com opacidade */
+}
+
+.delete-modal-content {
+  max-width: 500px;
+  height: 200px;
+  background-color: #fefefe; /* Cor de fundo do conteúdo */
+  margin: 15% auto; /* Centraliza o modal */
+  padding: 20px; /* Preenchimento interno */
+  border: 1px solid #888; /* Borda do modal */
+  width: 80%; /* Largura do modal */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column; /* Organiza os elementos em coluna */
+  justify-content: center;
+  align-items: center; /* Centraliza os elementos */
+  position: relative; /* Necessário para o .close */
+}
+
+/* Estilo do botão excluir */
+.delete-modal-content button {
+  width: 30%;
+  max-width: 230px; /* Largura máxima dos botões */
+  height: 5vh;
+  background-color: #ff6600;
+  color: white; /* Texto branco */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Muda o cursor para pointer */
+  margin-top: 10px; /* Espaçamento acima do botão */
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Estilo para o botão cancelar */
+
+.delete-botoes{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+}
+

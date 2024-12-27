@@ -1,0 +1,453 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap");
+
+/* Reset e configurações iniciais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Sora", sans-serif;
+  background: #e8e2ee;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  min-width: 320px; /* Garantir mínimo para dispositivos móveis */
+  overflow: hidden;
+}
+
+.container-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+#profile-photo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 5vw;
+  min-width: 50px;
+  height: 100%;
+  background-color: #f8f8f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2vh 0;
+  transition: width 0.3s ease;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidebar-item {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.sidebar-item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-icon {
+  background-color: #d9d9d9;
+  width: 80%;
+  height: 15%;
+  border-radius: 10px;
+}
+
+.select-icon::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 5px;
+  border-radius: 10px;
+  background-color: #00bfa6;
+}
+
+.menu:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+}
+
+.menu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 3px;
+  border-radius: 50px;
+  background-color: transparent;
+  transition: background-color 0.3s, top 0.3s;
+}
+
+.menu:hover::before {
+  background-color: #ff8c40;
+}
+
+.user-option {
+  width: 100%;
+  padding: 0 1em;
+  margin: 1em auto;
+  cursor: pointer;
+}
+
+main {
+  padding: 2vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  margin-left: 6vw; /* Espaço flexível baseado no tamanho da sidebar */
+  transition: margin-left 0.3s ease;
+}
+
+.titulo-partidas-guardadas {
+  width: 100%;
+  padding: 0 10.5vw;
+  margin: 20px 0;
+  text-align: start;
+  color: #6e4fc8;
+}
+
+.top-bar {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.selects {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.ordenar {
+  display: flex;
+}
+
+.top-bar select {
+  width: 25%;
+  padding: 0 10px;
+  height: 52px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #333;
+  outline: none;
+  font-weight: 500;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.top-bar input {
+  width: 50%;
+  padding: 15px 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #333;
+  outline: none;
+  font-weight: 500;
+  font-family: "Montserrat";
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+  gap: 20px; /* Espaçamento entre os cards */ /* Espaçamento interno do container */
+}
+
+.card-partida-guardada {
+  width: 100%;
+}
+.card {
+  width: 83%;
+  background-color: white;
+  border-radius: 10px 10px 10px 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 8px;
+}
+
+.card p{
+  font-size: 20px;
+}
+
+.botoes {
+  display: flex;
+  width: 100%;
+  gap: 1px;
+}
+.botoes span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  padding: 15px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: ease-out 500ms;
+}
+
+.cancelar {
+  background-color: #ccc;
+}
+
+.excluir {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.erro {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
+h2 {
+  margin: 0 0 10px; /* Margem do título */
+}
+
+label {
+  display: block; /* Faz o label ocupar toda a linha */
+  margin: 10px 0 5px; /* Margens do label */
+}
+
+input[type="text"] {
+  width: 100%; /* Largura total do input */
+  padding: 10px; /* Espaçamento interno do input */
+  margin-bottom: 10px; /* Margem inferior */
+  border: 1px solid #ccc; /* Borda do input */
+  border-radius: 4px; /* Bordas arredondadas */
+  box-sizing: border-box; /* Inclui padding e bordas na largura total */
+}
+
+button {
+  background-color: #e65c00; /* Cor do botão */
+  color: white; /* Cor do texto do botão */
+  padding: 10px 15px; /* Espaçamento interno do botão */
+  border: none; /* Remove a borda do botão */
+  border-radius: 4px; /* Bordas arredondadas do botão */
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+  font-size: 16px; /* Tamanho da fonte do botão */
+}
+
+.sem-partidas {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.sem-partidas .container-mascote {
+  margin: 20px 0;
+}
+
+.container-mascote h2 {
+  color: #6e4fc8;
+  font-family: "Sora";
+  font-size: 36px;
+}
+
+.container-mascote p {
+  font-size: 32px;
+  color: #6e4fc8;
+  font-weight: 300;
+  font-family: "Sora";
+}
+
+.crie-partida {
+  display: inline-block; /* Exibe como bloco inline */
+  padding: 12px 24px; /* Espaçamento interno */
+  background-color: #ff6600; /* Cor de fundo (laranja) */
+  color: white; /* Cor do texto (branca) */
+  font-size: 24px; /* Tamanho da fonte */
+  font-weight: bold; /* Texto em negrito */
+  text-align: center; /* Alinha o texto ao centro */
+  border-radius: 8px; /* Bordas arredondadas */
+  cursor: pointer; /* Aparece como botão no hover */
+  transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve para efeito 3D */
+  margin-top: 50px;
+}
+.crie-partida:hover {
+  background-color: #e65c00; /* Cor de fundo um pouco mais escura ao passar o mouse */
+}
+
+.historico-host{
+  width: 80%;
+}
+
+.historico-host2{
+  width: 100%;
+}
+
+.container-texto-imagem {
+  position: relative; /* Define o contêiner como referência para posicionamento absoluto */
+  width: fit-content; /* Define que o contêiner ajuste ao tamanho do conteúdo (a imagem) */
+  margin: 0 auto;
+}
+
+.balao-img {
+  display: block;
+  width: 100%; /* Ajuste o tamanho conforme necessário */
+  height: auto;
+}
+
+.texto-sobre-balao {
+  position: absolute; /* Posiciona o texto sobre a imagem */
+  top: 45%; /* Ajuste conforme necessário */
+  left: 50%; /* Ajuste conforme necessário */
+  transform: translate(-50%, -50%); /* Centraliza o texto */
+  text-align: center;
+  color: #000; /* Cor do texto */
+  font-size: 16px; /* Tamanho do texto */
+  width: 60%; /* Largura do texto dentro do balão */
+}
+
+.texto-sobre-balao h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 30px; /* Tamanho do título */
+  color: #6e4fc8;
+  font-family: "Sora";
+}
+
+.texto-sobre-balao p {
+  margin: 10px 0 0;
+  font-size: 20px;
+  line-height: 1.4; /* Para ajustar a linha do texto */
+  color: #6e4fc8;
+  font-family: "Sora";
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha os botões à esquerda */
+  margin-bottom: 20px; /* Adiciona espaço abaixo dos botões */
+}
+
+.button-container {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os botões */
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ff6600; /* Cor padrão do botão */
+  transition: background-color 0.3s ease;
+  width: 500px;
+  margin-top: 50px;
+}
+button:hover {
+  background-color: #e65c00;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dois cards por linha */
+  gap: 20px; /* Espaço entre os cards */
+  width: 80vw;
+  padding: 20px;
+}
+
+.escolherHistorico {
+  width: 97%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 260px;
+}
+
+button.selected {
+  background-color: #d55500; /* Cor do botão selecionado */
+  color: white; /* Cor do texto do botão selecionado */
+}
+
+.visualizar {
+  background-color: #ff6600; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  border: none; /* Sem borda */
+  border-radius: 4px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de ponteiro */
+  font-size: 24px; /* Tamanho da fonte */
+  font-weight: 700; /* Peso da fonte */
+  text-align: center; /* Alinhamento do texto */
+  display: flex; /* Usar flexbox para centralização */
+  justify-content: center; /* Centralizar horizontalmente */
+  align-items: center; /* Centralizar verticalmente */
+  height: 60px; /* Altura do botão */
+  width: 100%; /* Largura do botão */
+  transition: background-color 0.3s ease; /* Efeito de transição */
+}
+.visualizar:hover {
+  background-color: #e65c00; /* Cor de fundo ao passar o mouse */
+}
+
+.card h3 {
+  color: #6e4fc8;
+  font-family: "Montserrat";
+  font-size: 32px;
+  font-weight: 700px;
+}
+input[type="text"] {
+  padding-right: 40px; /* Espaçamento para evitar que o texto sobreponha o ícone */
+  width: 100%; /* Largura do input */
+}
+
+.icon-lupa {
+  position: absolute; /* Posiciona o ícone de forma absoluta */
+  right: 12vw; /* Distância do lado direito do input */
+  top: 11.6vh; /* Centraliza verticalmente em relação ao input */
+  transform: translateY(-50%); /* Ajusta a posição vertical para centralizar */
+  height: 20px; /* Ajuste a altura conforme necessário */
+  pointer-events: none; /* Ignora eventos de clique no ícone */
+}

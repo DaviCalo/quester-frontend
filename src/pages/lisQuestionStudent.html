@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/listaQuestoes.css" />
+    <link rel="icon" href="../../assets/icon/new-logo-quester.svg" type="image/x-icon" />
+    <title>Lista de Questão</title>
+  </head>
+  <body>
+    <nav class="sidebar">
+      <ul>
+        <li class="sidebar-item">
+          <a href="./alunoHome.html">
+          <img src="../../assets/icon/new-logo-quester.svg" alt="" />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Entrar Partida">
+          <a href="./alunoHome.html">
+            <img src="../../assets/icon/Play.svg" alt="Play" />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Criar Partida">
+          <a href="./criarPartidaStudent.html">
+            <img src="../../assets/icon/add-square.svg" alt="Play" />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Partidas Guardadas">
+          <a href="./partidasGuardadasStudent.html">
+            <img src="../../assets/icon/Grid.svg" alt="Lista de Questões" />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Lista de Questões">
+          <a href="./lisQuestionStudent.html">
+            <img
+              src="../../assets/icon/icon-seleted-question.svg"
+              alt="Lista de Questões"
+            />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Historico de Partidas">
+          <a href="historicoDePartidaStudent.html">
+            <img src="../../assets/icon/Document Copy.svg" alt="Historico de Partidas" />
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li class="user-option" title="Configuração de Perfil">
+          <a href="./configProfileStudent.html">
+            <img src="../../assets/icon/person-circle.svg" alt="Profile" id="profile-photo" />
+          </a>
+        </li>
+        <li class="user-option"  title="Logout">
+          <a href="../../index.html" id="logout">
+            <img src="../../assets/icon/Arrow Exit.svg" alt="Logout"/>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="fixed-box">
+        <img
+          src="../../assets/icon/Add Circle.svg"
+          alt=""
+          id="criarQuestao"
+          title="Criar Questão"
+        />
+        <img
+          src="../../assets/icon/bx_duplicate.svg"
+          alt=""
+          id="duplicarQuestao"
+          title="Duplicar Questão"
+        />
+        <img
+          src="../../assets/icon/iconDelete.svg"
+          alt=""
+          id="excluirQuestao"
+          title="Excluir Questão"
+        />
+        <img src="../../assets/icon/iconEdit.svg" id="editarQuestao" title="Editar Questão"/>
+      </div>
+      <h1 class="titulo">Lista de questões</h1>
+      <div class="container-settings top-bar">
+        <input
+          type="text"
+          id="pesquisaTag"
+          placeholder="Pesquise por uma tag"
+        />
+      </div>
+
+      <div class="container-settings questoes">
+        <div id="card" class="card-questao-aberta">
+          <div class="escolher-tipo-pergunta">
+            <input
+              type="text"
+              id="pergunta"
+              class="pergunta-aberta"
+              placeholder="Pergunta"
+            />
+            <select name="tipoDePergunta" id="tipoDePergunta">
+              <optgroup label="Escolha o tipo da pergunta:">
+                <option value="OPEN" selected>Resposta Curta</option>
+                <option value="CLOSE">Alternativas</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div id="OPEN" class="resposta-curta">
+            <input
+              type="text"
+              class="resposta"
+              placeholder="Resposta Curta"
+              id="inputOPEN"
+              oninput="validateSingleWord(this)"
+            />
+          </div>
+
+          <div id="alternativas" class="alternativas" style="display: none">
+            <div class="alternativa">
+              <input type="radio" name="alternativa" id="A" />
+              <input type="text" class="resposta" placeholder="Alternativa A" />
+            </div>
+            <div class="alternativa">
+              <input type="radio" name="alternativa" id="B" />
+              <input type="text" class="resposta" placeholder="Alternativa B" />
+            </div>
+            <div class="alternativa">
+              <input type="radio" name="alternativa" id="C" />
+              <input type="text" class="resposta" placeholder="Alternativa C" />
+            </div>
+            <div class="alternativa">
+              <input type="radio" name="alternativa" id="D" />
+              <input type="text" class="resposta" placeholder="Alternativa D" />
+            </div>
+          </div>
+          <div class="tags">
+            <h3>Tags:</h3>
+            <input type="text" class="criar-tag" />
+          </div>
+        </div>
+
+        <div id="questoesList" class="questoes-list"></div>
+      </div>
+
+      <!-- Modal para Editar Questão -->
+      <div id="editQuestionModal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="closeModal">&times;</span>
+          <h2>Editar Questão</h2>
+          <div class="escolher-tipo-pergunta">
+            <input
+              type="text"
+              id="editPergunta"
+              class="pergunta-aberta"
+              placeholder="Pergunta"
+            />
+            <select name="tipoDePergunta" id="editTipoPergunta">
+              <optgroup label="Escolha o tipo da pergunta:">
+                <option value="OPEN">Resposta Curta</option>
+                <option value="CLOSE">Alternativas</option>
+              </optgroup>
+            </select>
+          </div>
+          <div id="editOPEN" class="resposta-curta" style="display: none">
+            <input
+              type="text"
+              id="editResposta"
+              class="resposta"
+              placeholder="Resposta Curta"
+            />
+          </div>
+          <div id="editAlternativas" class="alternativas" style="display: none">
+            <div class="alternativa">
+              <input type="radio" name="editAlternativa" id="editA" />
+              <input type="text" class="resposta" placeholder="Alternativa A" />
+            </div>
+            <div class="alternativa">
+              <input type="radio" name="editAlternativa" id="editB" />
+              <input type="text" class="resposta" placeholder="Alternativa B" />
+            </div>
+            <div class="alternativa">
+              <input type="radio" name="editAlternativa" id="editC" />
+              <input type="text" class="resposta" placeholder="Alternativa C" />
+            </div>
+            <div class="alternativa">
+              <input type="radio" name="editAlternativa" id="editD" />
+              <input type="text" class="resposta" placeholder="Alternativa D" />
+            </div>
+          </div>
+          <div class="tags">
+            <h3>Tags:</h3>
+            <input
+              type="text"
+              id="editTags"
+              class="criar-tag"
+              placeholder="Tags"
+            />
+          </div>
+          <div class="editButton">
+            <button id="saveEditButton">Salvar Edição</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal para confirmar a exclusão -->
+<div class="modal" id="deleteModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeDeleteModal()">&times;</span>
+        <h2>Confirmação de Exclusão</h2>
+        <p>Tem certeza que deseja excluir essa questão?</p>
+        <button onclick="confirmDelete()">Excluir</button>
+        <button onclick="closeDeleteModal()">Cancelar</button>
+    </div>
+</div>
+    </main>
+
+    <script>
+      // Seletores
+      const selecionaTipo = document.getElementById("tipoDePergunta");
+      const card = document.getElementById("card");
+      const OPEN = document.getElementById("OPEN");
+      const alternativas = document.getElementById("alternativas");
+
+      // Alterna o tipo de pergunta (resposta curta ou alternativas)
+      selecionaTipo.addEventListener("change", function () {
+        const tipoPergunta = selecionaTipo.value;
+
+        if (tipoPergunta === "OPEN") {
+          card.className = "card-questao-aberta";
+          OPEN.style.display = "block";
+          alternativas.style.display = "none";
+        } else if (tipoPergunta === "CLOSE") {
+          card.className = "card-questao-fechada";
+          OPEN.style.display = "none";
+          alternativas.style.display = "block";
+        }
+      });
+
+      function validateSingleWord(input) {
+        // Verifica se o ID do input é 'inputOPEN'
+        if (input.id === "inputOPEN") {
+          const value = input.value;
+
+          // Se o valor contiver espaços, remova o último caractere digitado
+          if (/\s/.test(value)) {
+            input.value = value.replace(/\s/g, "");
+            alert("Apenas uma palavra é permitida!");
+          }
+        }
+      }
+
+      // Evento para criar uma nova questão
+      document
+        .getElementById("criarQuestao")
+        .addEventListener("click", async () => {
+          const tipoPergunta = selecionaTipo.value;
+          const pergunta = document.getElementById("pergunta").value.trim();
+          const tags = document
+            .querySelector(".criar-tag")
+            .value.split(",")
+            .map((tag) => tag.trim())
+            .filter((tag) => tag); // Remove tags vazias
+
+          let items = [];
+          let correctItem = "";
+
+          // Validação dos campos
+          if (!pergunta) {
+            alert("Por favor, preencha a pergunta.");
+            return;
+          }
+
+          if (tipoPergunta === "CLOSE") {
+            const alternativasInputs = document.querySelectorAll(
+              ".alternativa input[type='text']"
+            );
+            const selectedAlternative = document.querySelector(
+              ".alternativa input[type='radio']:checked"
+            );
+
+            items = Array.from(alternativasInputs).map((input, index) =>{
+                if(index < 4){
+                  console.log(input.value.trim())
+                   return input.value.trim()
+                }
+            }
+            );
+
+            items.splice(4, 4);
+
+            // Verifica se todas as alternativas estão preenchidas
+            if (items.some((item) => !item)) {
+              console.log(items);
+              alert("Por favor, preencha todas as alternativas.");
+              return;
+            }
+
+            correctItem = selectedAlternative
+              ? selectedAlternative.parentNode
+                  .querySelector('input[type="text"]')
+                  .value.trim()
+              : "";
+
+            if (!correctItem) {
+              alert("Por favor, selecione uma alternativa correta.");
+              return;
+            }
+          } else {
+            correctItem = document.querySelector(".resposta").value.trim();
+            if (!correctItem) {
+              alert("Por favor, preencha a resposta.");
+              return;
+            }
+          }
+
+          // Validação das tags
+          if (tags.length === 0) {
+            alert("Por favor, preencha pelo menos uma tag.");
+            return;
+          }
+
+          const userId = localStorage.getItem("userId");
+
+          const questionData = {
+            _id: userId,
+            type: tipoPergunta,
+            question: pergunta,
+            item: items,
+            correct_item: correctItem,
+            tags: tags,
+          };
+
+          console.log(questionData);
+
+          try {
+            const response = await fetch("http://localhost:3000/question", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(questionData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              alert("Questão criada com sucesso!");
+
+              // Limpar os campos após o envio
+              document.getElementById("pergunta").value = "";
+              document.querySelector(".criar-tag").value = "";
+
+              if (tipoPergunta === "OPEN") {
+                document.querySelector(".resposta").value = "";
+              } else {
+                const alternativasInputs = document.querySelectorAll(
+                  ".alternativa input[type='text']"
+                );
+                alternativasInputs.forEach((input) => (input.value = ""));
+                const radios = document.querySelectorAll(
+                  ".alternativa input[type='radio']"
+                );
+                radios.forEach((radio) => (radio.checked = false));
+              }
+
+              loadQuestions(); // Atualiza a lista de questões
+            } else {
+              alert(`Erro: ${data.error}`);
+            }
+          } catch (error) {
+            console.error("Erro na requisição:", error);
+            alert("Erro na requisição.");
+          }
+        });
+
+      // Carregar as questões já existentes
+      document.addEventListener("DOMContentLoaded", async () => {
+        loadQuestions();
+        const setphoto = await getPhoto(localStorage.getItem("userId"));
+      });
+
+      async function loadQuestions() {
+        const userId = localStorage.getItem("userId");
+
+        try {
+          const response = await fetch(
+            `http://localhost:3000/question/${userId}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          const data = await response.json();
+
+          if (response.ok) {
+            const questoesList = document.getElementById("questoesList");
+            questoesList.innerHTML = ""; // Limpa a lista
+
+            // Adiciona as questões, novas aparecem primeiro
+            data.questions.forEach((questao) => {
+              const questionDiv = document.createElement("div");
+
+              // Adiciona um checkbox para seleção da questão
+              const checkbox = document.createElement("input");
+              checkbox.type = "checkbox";
+              checkbox.value = questao._id; // Armazena o ID da questão
+              checkbox.className = "question-checkbox"; // Classe para referência futura
+              checkbox.id = `checkbox-${questao._id}`; // ID único para cada checkbox
+
+              // Cria um label para estilizar
+              const label = document.createElement("label");
+              label.className = "checkbox-label";
+              label.htmlFor = `checkbox-${questao._id}`; // Associa o label ao checkbox
+
+              // Define a classe de acordo com o tipo de questão
+              questionDiv.className =
+                questao.type === "CLOSE"
+                  ? "card-questao-fechada-feita"
+                  : "card-questao-aberta-feita";
+
+              let itemsHTML = "";
+
+              if (questao.type === "CLOSE") {
+                questao.item.forEach((item) => {
+                  itemsHTML += `
+                    <div class="alternativa">
+                      <input type="radio" name="questao-${questao._id}" ${
+                    item === questao.correct_item ? "checked" : ""
+                  } disabled />
+                      <p>${item}</p>
+                    </div>`;
+                });
+              } else {
+                itemsHTML += `<p class="respostaPronta">${questao.correct_item}</p>`;
+              }
+
+              questionDiv.innerHTML = `
+        <h3>${questao.question}</h3>
+        ${itemsHTML}
+        <div class="tags-questao-feita">
+          <h4>Tags:</h4>
+          <p>${questao.tags.join(", ")}</p>
+        </div>
+        <div class="used-matches">
+          <h4>Usada em:</h4>
+          <p>${
+            questao.used_matches.length > 0
+              ? questao.used_matches.join(", ")
+              : "Não foi usada"
+          }</p>
+        </div>
+      `;
+
+              // Adiciona o checkbox ao questionDiv
+              questionDiv.prepend(label);
+              questionDiv.prepend(checkbox); // Adiciona o checkbox antes do título
+
+              // Adiciona a nova questão no início da lista
+              questoesList.prepend(questionDiv); // Insere a nova questão no início da lista
+            });
+          } else {
+            alert(`Erro ao carregar questões: ${data.error}`);
+          }
+        } catch (error) {
+          console.error("Erro na requisição:", error);
+          alert("Erro ao carregar questões.");
+        }
+      }
+
+      // Evento para excluir as questões selecionadas
+      document
+        .getElementById("excluirQuestao")
+        .addEventListener("click", async () => {
+          const checkboxes = document.querySelectorAll(
+            ".question-checkbox:checked"
+          );
+          const userId = localStorage.getItem("userId");
+
+          if (checkboxes.length === 0) {
+            alert("Selecione pelo menos uma questão para excluir.");
+            return;
+          }
+
+          const confirmDelete = confirm(
+            "Tem certeza que deseja excluir as questões selecionadas?"
+          );
+          if (confirmDelete) {
+            for (const checkbox of checkboxes) {
+              const questionId = checkbox.value;
+
+              try {
+                const response = await fetch(
+                  `http://localhost:3000/question/${userId}/${questionId}`,
+                  {
+                    method: "DELETE",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                  }
+                );
+
+                if (!response.ok) {
+                  const data = await response.json();
+                  alert(
+                    `Erro ao excluir a questão com ID ${questionId}: ${data.error}`
+                  );
+                }
+              } catch (error) {
+                console.error("Erro na requisição:", error);
+                alert("Erro ao excluir questões.");
+              }
+            }
+            alert("Questões excluídas com sucesso!");
+            loadQuestions(); // Atualiza a lista de questões
+          }
+        });
+
+      // Evento para duplicar uma questão
+      document
+        .getElementById("duplicarQuestao")
+        .addEventListener("click", async () => {
+          const selectedCheckboxes = document.querySelectorAll(
+            ".question-checkbox:checked"
+          );
+
+          if (selectedCheckboxes.length === 0) {
+            alert("Por favor, selecione pelo menos uma questão para duplicar.");
+            return;
+          }
+
+          const userId = localStorage.getItem("userId");
+
+          for (const checkbox of selectedCheckboxes) {
+            const questionId = checkbox.value; // Obtém o ID da questão selecionada
+
+            const requestData = {
+              _id: userId,
+              _id_question: questionId,
+            };
+
+            try {
+              const response = await fetch(
+                "http://localhost:3000/duplicate-question",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(requestData),
+                }
+              );
+
+              const data = await response.json();
+
+              if (response.ok) {
+                alert(`Questão duplicada com sucesso!`);
+              } else {
+                alert(`Erro ao duplicar questão: ${data.error}`);
+              }
+            } catch (error) {
+              console.error("Erro na requisição:", error);
+              alert("Erro ao duplicar a questão.");
+            }
+          }
+
+          loadQuestions(); // Atualiza a lista de questões após a duplicação
+        });
+
+      //Pesquisar pela tag
+      // Seletor do campo de pesquisa
+      const pesquisaTagInput = document.getElementById("pesquisaTag");
+
+      // Função para filtrar as questões pelas tags digitadas
+      function filterQuestionsByTags(tags) {
+        const questoesList = document.getElementById("questoesList");
+        const allQuestions = questoesList.querySelectorAll(
+          ".card-questao-aberta-feita, .card-questao-fechada-feita"
+        ); // Filtra apenas os cards de questões
+
+        allQuestions.forEach((questionDiv) => {
+          // Captura as tags da questão e remove espaços extras
+          console.log(questionDiv);
+          const questionTags = questionDiv
+            .querySelector(".tags-questao-feita p")
+            .textContent.split(",")
+            .map((tag) => tag.trim().toLowerCase())
+            .filter((tag) => tag); // Remove tags vazias ou espaços em branco
+
+          // Verifica se todas as tags pesquisadas estão presentes nas tags da questão
+          const hasAllTags = tags.every((tag) => questionTags.includes(tag));
+
+          // Exibe ou oculta a questão com base no resultado do filtro
+          if (hasAllTags) {
+            questionDiv.style.display = "block"; // Exibe a questão se todas as tags forem encontradas
+          } else {
+            questionDiv.style.display = "none"; // Oculta a questão se alguma tag estiver faltando
+          }
+        });
+      }
+
+      // Evento de pesquisa ao digitar na barra de pesquisa
+      pesquisaTagInput.addEventListener("input", () => {
+        const query = pesquisaTagInput.value.trim().toLowerCase(); // Captura o valor digitado
+        const tags = query
+          .split(",")
+          .map((tag) => tag.trim().toLowerCase())
+          .filter((tag) => tag); // Divide por vírgula e remove espaços extras
+
+        if (tags.length === 0) {
+          loadQuestions(); // Se o campo estiver vazio, carrega todas as questões
+          return;
+        }
+
+        filterQuestionsByTags(tags); // Chama a função para filtrar as questões por tags
+      });
+
+      //////////////////////////////////////
+      // Seleciona o ícone de edição
+      const editIcon = document.getElementById("editarQuestao");
+
+      // Função para permitir apenas um checkbox selecionado
+      document.querySelectorAll(".question-checkbox").forEach((checkbox) => {
+        checkbox.addEventListener("change", function () {
+          if (this.checked) {
+            // Desmarca todos os outros checkboxes
+            document
+              .querySelectorAll(".question-checkbox")
+              .forEach((otherCheckbox) => {
+                if (otherCheckbox !== this) {
+                  otherCheckbox.checked = false;
+                }
+              });
+          }
+        });
+      });
+
+      // Função para abrir o modal de edição e carregar os dados da questão
+      document.getElementById("editarQuestao").addEventListener("click", () => {
+        const selectedCheckboxes = document.querySelectorAll(
+          ".question-checkbox:checked"
+        );
+
+        // Verifica se há mais ou menos de uma questão selecionada
+        if (selectedCheckboxes.length !== 1) {
+          alert("Por favor, selecione apenas uma questão para editar.");
+          return;
+        }
+
+        const questionId = selectedCheckboxes[0].value; // Obtém o ID da questão selecionada
+
+        // Agora carregue a questão selecionada no modal
+        fetchQuestionData(questionId);
+      });
+
+      // Função para carregar os dados da questão no modal
+      async function fetchQuestionData(questionId) {
+        try {
+          const response = await fetch(
+            `http://localhost:3000/question/find/${questionId}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          const questionData = await response.json();
+
+          if (response.ok) {
+            // Preencher o modal com os dados da questão
+            document.getElementById("editPergunta").value =
+              questionData.question;
+            document.getElementById("editTags").value =
+              questionData.tags.join(", ");
+            document.getElementById("editTipoPergunta").value =
+              questionData.type;
+
+            if (questionData.type === "OPEN") {
+              document.getElementById("editOPEN").style.display = "block";
+              document.getElementById("editAlternativas").style.display =
+                "none";
+              document.getElementById("editResposta").value =
+                questionData.correct_item;
+            } else {
+              document.getElementById("editOPEN").style.display = "none";
+              document.getElementById("editAlternativas").style.display =
+                "block";
+
+              const alternativasInputs = document.querySelectorAll(
+                "#editAlternativas .alternativa input[type='text']"
+              );
+              questionData.item.forEach((item, index) => {
+                alternativasInputs[index].value = item;
+              });
+
+              // Selecionar a alternativa correta
+              const radios = document.querySelectorAll(
+                "#editAlternativas input[type='radio']"
+              );
+              questionData.item.forEach((item, index) => {
+                if (item === questionData.correct_item) {
+                  radios[index].checked = true;
+                }
+              });
+            }
+
+            // Exibir o modal de edição
+            document.getElementById("editQuestionModal").style.display =
+              "block";
+          } else {
+            alert("Erro ao carregar os dados da questão.");
+          }
+        } catch (error) {
+          console.error("Erro ao buscar os dados da questão:", error);
+          alert("Erro ao buscar os dados da questão.");
+        }
+      }
+
+      // Função para fechar o modal
+      document.getElementById("closeModal").addEventListener("click", () => {
+        document.getElementById("editQuestionModal").style.display = "none";
+      });
+
+      // Fecha o modal quando clicar fora do conteúdo
+      window.addEventListener("click", function (event) {
+        const editModal = document.getElementById("editQuestionModal");
+        if (event.target === editModal) {
+          editModal.style.display = "none";
+        }
+      });
+
+      // Função para salvar a edição da questão
+      document
+        .getElementById("saveEditButton")
+        .addEventListener("click", async () => {
+          const questionId = document.querySelector(
+            ".question-checkbox:checked"
+          ).value;
+          const tipoPergunta =
+            document.getElementById("editTipoPergunta").value;
+          const pergunta = document.getElementById("editPergunta").value.trim();
+          const tags = document
+            .getElementById("editTags")
+            .value.split(",")
+            .map((tag) => tag.trim())
+            .filter((tag) => tag); // Remove tags vazias
+
+          let items = [];
+          let correctItem = "";
+
+          // Validação dos campos
+          if (!pergunta) {
+            alert("Por favor, preencha a pergunta.");
+            return;
+          }
+
+          if (tipoPergunta === "CLOSE") {
+            const alternativasInputs = document.querySelectorAll(
+              "#editAlternativas .alternativa input[type='text']"
+            );
+            const selectedAlternative = document.querySelector(
+              "#editAlternativas .alternativa input[type='radio']:checked"
+            );
+
+            items = Array.from(alternativasInputs).map((input) =>
+              input.value.trim()
+            );
+
+            // Verifica se todas as alternativas estão preenchidas
+            if (items.some((item) => !item)) {
+              alert("Por favor, preencha todas as alternativas.");
+              return;
+            }
+
+            correctItem = selectedAlternative
+              ? selectedAlternative.parentNode
+                  .querySelector('input[type="text"]')
+                  .value.trim()
+              : "";
+
+            if (!correctItem) {
+              alert("Por favor, selecione uma alternativa correta.");
+              return;
+            }
+          } else {
+            correctItem = document.getElementById("editResposta").value.trim();
+            if (!correctItem) {
+              alert("Por favor, preencha a resposta.");
+              return;
+            }
+          }
+
+          // Validação das tags
+          if (tags.length === 0) {
+            alert("Por favor, preencha pelo menos uma tag.");
+            return;
+          }
+
+          const userId = localStorage.getItem("userId");
+
+          const updatedQuestionData = {
+            _id: userId,
+            _id_question: questionId,
+            type: tipoPergunta,
+            question: pergunta,
+            item: items,
+            correct_item: correctItem,
+            tags: tags,
+          };
+
+          console.log(updatedQuestionData);
+
+          try {
+            // Envia os dados da questão editada para o backend
+            const response = await fetch("http://localhost:3000/question", {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(updatedQuestionData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              alert("Questão editada com sucesso!");
+
+              // Fecha o modal após salvar a edição
+              document.getElementById("editQuestionModal").style.display =
+                "none";
+
+              // Atualiza a lista de questões na interface
+              loadQuestions();
+            } else {
+              alert(`Erro: ${data.error}`);
+            }
+          } catch (error) {
+            console.error("Erro na requisição:", error);
+            alert("Erro ao salvar a edição da questão.");
+          }
+        });
+
+        const getPhoto = async (idUSer) => {
+    try {
+        const response = await fetch(`http://localhost:3000/profile-photo/${idUSer}`, {
+            headers: { 'Content-Type': 'multipart/form-data', },
+        });
+        if (response.ok) {
+            const blob = await response.blob();
+            const imgURL = URL.createObjectURL(blob);
+            const img = document.getElementById("profile-photo");
+            img.src = imgURL;
+        } else {
+            console.error('Erro ao enviar o arquivo:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Erro na requisição:', error);
+    }
+}
+
+const logoutButton = document.getElementById("logout");
+    logoutButton.addEventListener("click", function () {
+        localStorage.removeItem("userId");
+        localStorage.removeItem("occupation");
+    });
+    </script>
+  </body>
+</html>

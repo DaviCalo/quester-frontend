@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Sora", sans-serif;
+  background: #F5F3F7;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container-settings {
+  min-width: 40%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  height: 15%;
+  justify-content: center;
+  align-items: end;
+}
+
+nav ul {
+  width: 100vw;
+  padding: 0px 15.3vw;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  padding: 2vh;
+  gap: 1vw;
+  overflow-y: auto;
+}
+
+.container-mascot {
+  display: flex;
+  width: 50vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-mascot {
+  width: 100%;
+  height: 100%;
+  max-height: 650px;
+  max-width: 580px;
+  min-width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 200px;
+}
+
+#mascote {
+  margin-left: 12vw;
+  width: 50%;
+}
+
+
+.points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1vw;
+  margin: 10px 0 0 200px;
+}
+
+.point {
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: 2px solid #a0a0a0;
+  cursor: pointer;
+}
+
+.selected {
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: #a0a0a0;
+  border: 2px solid #a0a0a0;
+  cursor: pointer;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+}
+
+.login-box {
+  margin: -60px 200px 0 0;
+  width: 35vw;
+  padding: 40px;
+}
+
+.login-box h2 {
+  font-size: 48px;
+  margin-bottom: 50px;
+  text-align: center;
+  color: #6E4FC8;
+}
+
+.input-box {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.input-box input {
+  width: 100%;
+  min-width: 350px;
+  height: 8vh;
+  padding: 15px 50px 15px 80px;
+  background-color: #FFFFFF;
+  border: 2px solid #6E4FC8;
+  border-radius: 10px;
+  font-size: 24px;
+  color: #333;
+  outline: none;
+  transition: border-color 0.5s;
+  font-weight: 500;
+  font-family: "Montserrat";
+}
+
+.input-box input:focus {
+  border: 2px solid #FF6600;
+}
+
+.input-box i {
+  position: absolute;
+  top: 63%;
+  left: 30px;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 30px;
+}
+
+button[type="submit"] {
+  margin-top: 25px;
+  width: 100%;
+  height: 7vh;
+  padding: 15px;
+  background-color: #FF6600;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 24px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3)
+}
+
+button[type="submit"]:hover {
+  background-color: #f56200;
+}
+
+button[type="submit"]:active {
+  background-color: #e05a00;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.login-link p {
+  font-size: 20px;
+  color: #000;
+  font-weight: 500;
+}
+
+.login-link a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  text-decoration: underline;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.mensagem-erro {
+  color: red;
+  font-size: 15px;
+  margin: -5px 0 5px 3px;
+  text-align: start;
+}
+
+.input-names {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.input-nome,
+.input-sobrenome {
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.input-nome input,
+.input-sobrenome input {
+  width: 100%;
+  min-width: 170px;
+  height: 8vh;
+  padding: 15px 20px 15px 80px;
+  border-radius: 10px;
+  font-size: 24px;
+  color: #333;
+  outline: none;
+  background-color: #FFFFFF;
+  border: 2px solid #6E4FC8;
+  font-style: italic;
+  transition: border-color 0.5s;
+  font-weight: 500;
+  font-family: "Montserrat";
+}
+
+.input-sobrenome input {
+  padding: 15px 20px 15px 20px;
+}
+
+.input-nome i {
+  position: absolute;
+  top: 65%;
+  left: 30px;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 30px;
+}
+
+.input-names input:focus {
+  border: 2px solid #FF6600;
+}
+
+label {
+    font-size: 20px;
+    color: #6E4FC8;
+  }
+

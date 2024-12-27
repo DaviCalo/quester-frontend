@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configurações de perfil</title>
+    <link rel="icon" href="../../assets/icon/new-logo-quester.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="../styles/configProfile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <nav class="sidebar">
+      <ul>
+        <li class="sidebar-item">
+          <a href="./alunoHome.html">
+          <img src="../../assets/icon/new-logo-quester.svg" alt="" />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Entrar Partida">
+          <a href="./alunoHome.html">
+            <img src="../../assets/icon/Play.svg" alt="Play" />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Criar Partida">
+          <a href="./criarPartidaStudent.html">
+            <img src="../../assets/icon/add-square.svg" alt="Play" />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Partidas Guardadas">
+          <a href="./partidasGuardadasStudent.html">
+            <img src="../../assets/icon/Grid.svg" alt="Lista de Questões" />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Lista de Questões">
+          <a href="./lisQuestionStudent.html">
+            <img
+              src="../../assets/icon/Text Bullet List Square.svg"
+              alt="Lista de Questões"
+            />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Historico de Partidas">
+          <a href="historicoDePartidaStudent.html">
+            <img src="../../assets/icon/Document Copy.svg" alt="Historico de Partidas" />
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li class="user-option" title="Configuração de Perfil">
+          <a href="./configProfileStudent.html">
+            <img src="../../assets/icon/person-circle.svg" alt="Profile" id="profile-photo" />
+          </a>
+        </li>
+        <li class="user-option"  title="Logout">
+          <a href="../../index.html" id="logout">
+            <img src="../../assets/icon/Arrow Exit.svg" alt="Logout"/>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <main class="content">
+      <header>
+        <div class="header-text">
+          <h2>Configurações do perfil</h2>
+        </div>
+      </header>
+      <section class="mid-area">
+        <div id="mid-one">
+          <div id="profile-area">
+            <div id="text-photo-profile">
+              <p id="photo-profile-description">
+                Sua foto de perfil aparecerá<br />
+                em todas as partidas que<br />você participar.
+              </p>
+            </div>
+            <div class="circle-area">
+              <img class="profile-circle" id="profile-circle">
+              <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+            </img>
+            </div>
+            <div id="text-visualization">
+              <p id="text-pre-visu">Pré-visualização da imagem de perfil</p>
+            </div>
+          </div>
+          <div class="logout-button">
+            <button type="button" id="logout-button">
+              <img
+                src="../../assets/icon/logout.svg"
+                id="logout-button-icon"
+              />Logout
+            </button>
+          </div>
+        </div>
+        <div id="mid-two">
+          <div id="data-area">
+            <div id="area-form">
+              <form id="data-form">
+                <div class="input-box">
+                  <label for="name" class="label-form">Nome</label>
+                  <input type="text" id="name" name="name" class="caixa-form" />
+                </div>
+                <div class="input-box">
+                  <label for="lastname" class="label-form">Sobrenome</label>
+                  <input
+                    type="text"
+                    id="lastname"
+                    name="lastname"
+                    class="caixa-form"
+                  />
+                </div>
+                <div class="input-box">
+                  <label for="surname" class="label-form">User</label>
+                  <input type="text" id="surname" class="user" name="surname" />
+                </div>
+                <div class="input-box">
+                  <label for="email" class="label-form">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="caixa-form"
+                  />
+                </div>
+
+                <div class="input-box">
+                  <label for="password" class="label-form">Senha</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="caixa-form"
+                  />
+                  <i class="bi bi-eye-fill" id="iconEye"></i>
+                </div>
+              </form>
+            </div>
+            <div id="delete-area">
+              <button class="delete-button" id="delete-user-button">Excluir conta</button>
+              <div id="delete-text-area">
+                <p id="delete-alert">
+                  Uma vez excluída, sua conta será perdida
+                  <span id="text-perm">permanentemente</span> sem opção de
+                  recuperação.
+                </p>
+              </div>
+            </div>
+            <button class="confirm-button" id="configProfile">Confirmar</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="../scripts/configProfile.js"></script>
+  </body>
+</html>

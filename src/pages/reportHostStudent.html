@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatório de partida</title>
+    <link rel="icon" href="../../assets/icon/new-logo-quester.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="../styles/reportHost.css"/>
+    <script src="../scripts/reportHostStudent.js"></script>
+  </head>
+  <body>
+    <nav class="sidebar">
+      <ul>
+        <li class="sidebar-item">
+          <a href="./alunoHome.html">
+          <img src="../../assets/icon/new-logo-quester.svg" alt="" />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Entrar Partida">
+          <a href="./alunoHome.html">
+            <img src="../../assets/icon/Play.svg" alt="Play" />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Criar Partida">
+          <a href="./criarPartidaStudent.html">
+            <img src="../../assets/icon/add-square.svg" alt="Play" />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Partidas Guardadas">
+          <a href="./partidasGuardadasStudent.html">
+            <img src="../../assets/icon/Grid.svg" alt="Lista de Questões" />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Lista de Questões">
+          <a href="./lisQuestionStudent.html">
+            <img
+              src="../../assets/icon/Text Bullet List Square.svg"
+              alt="Lista de Questões"
+            />
+          </a>
+        </li>
+        <li class="sidebar-item menu" title="Historico de Partidas">
+          <a href="historicoDePartidaStudent.html">
+            <img src="../../assets/icon/icon-historic-match.svg" alt="Historico de Partidas" />
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li class="user-option" title="Configuração de Perfil">
+          <a href="./configProfileStudent.html">
+            <img src="../../assets/icon/person-circle.svg" alt="Profile" id="profile-photo" />
+          </a>
+        </li>
+        <li class="user-option"  title="Logout">
+          <a href="../../index.html" id="logout">
+            <img src="../../assets/icon/Arrow Exit.svg" alt="Logout"/>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+    <main class="content">
+      <header>
+          <h2>Relatório de Partida</h2>
+      </header>
+      <section class="interface-design">
+        <div class="info">
+          <div class="info-text">
+            <h2 id="name-match">Design de interface</h2>
+            <h4 id="description-match">Turma de Quarta</h4>
+          </div>
+          <div class="match-description">
+            <div>
+              <img src="../../assets/icon/calendar2.svg" />
+              <p id="timer-match" >14/02/2024 - 13:00</p>
+            </div>
+            <div>
+              <img src="../../assets/icon/question circle2.svg" />
+              <p id="number-questions">10 questões</p>
+            </div>
+            <div>
+              <img src="../../assets/icon/clock icon2.svg" />
+              <p id="timer-questions">Tempo de questão: 30 seg.</p>
+            </div>
+            <div>
+              <img src="../../assets/icon/user icon2.svg" alt="" />
+              <p id="number-players" >25 participantes</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="results">
+        <h4>Resultado</h4>
+        <div class="section-list" id="section-list">
+          <!-- <div class="question-container">
+            <div class="content-container">
+              <p class="question">1. Qual a capital do Brasil?</p>
+              <p class="answer">Brasília</p>
+              <div class="report-list">
+                <div class="result correct">
+                  <div>
+                    <img
+                      src="../../assets/icon/checkmark green circle.svg"
+                    />
+                    <p class="percentage"><span>70%</span> Acertaram</p>
+                  </div>
+                  <img src="/frontend/assets/icon/Arrow Expand.svg" />
+                </div>
+                <div class="result wrong">
+                  <div>
+                    <img src="../../assets/icon/checkmark red circle.svg" />
+                    <p class="percentage"><span>30%</span> Erraram</p>
+                  </div>
+                  <img src="../../assets/icon/Arrow Expand.svg" />
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

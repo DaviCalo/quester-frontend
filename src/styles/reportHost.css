@@ -1,0 +1,377 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Sora", sans-serif;
+  background: #e8e2ee;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  min-width: 320px; /* Garantir mínimo para dispositivos móveis */
+  overflow: hidden;
+  padding: 2vw; /* Margem flexível */
+}
+
+/* Configurações gerais para containers */
+.container-settings {
+  width: 100%;
+  max-width: 600px;
+  min-width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3vw;
+  margin: 2vh 1vw;
+  border-radius: 10px;
+}
+
+#profile-photo{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f3f7;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 5vw;
+  min-width: 50px;
+  height: 100%;
+  background-color: #F8F8F9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2vh 0;
+  transition: width 0.3s ease;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidebar-item {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.sidebar-item a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-icon{
+  background-color: #D9D9D9;
+  width: 80%;
+  height: 15%;
+  border-radius: 10px;
+}
+
+.select-icon::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 5px;
+  border-radius: 10px;
+  background-color: #00bfa6;
+}
+
+.menu:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+}
+
+.menu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 3px;
+  border-radius: 50px;
+  background-color: transparent;
+  transition: background-color 0.3s, top 0.3s;
+}
+
+.menu:hover::before {
+  background-color: #FF8C40;
+}
+
+.user-option {
+  width: 100%;
+  padding: 0 1em;
+  margin: 1em auto;
+  cursor: pointer;
+}
+
+.content {
+  padding: 20px;
+  height: 100%;
+}
+
+.content header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 9%;
+  max-width: 40%;
+  margin-bottom: 8px;
+}
+
+.content header h2 {
+  min-width: 50%;
+  font-family: "Sora";
+  font-weight: 700;
+  font-size: 28px;
+  color: #6E4FC8;
+}
+
+.interface-design {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 27%;
+}
+
+.info {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #5E5D5D;
+}
+
+.info h2{
+  font-family: "Sora";
+  font-weight: 600;
+  font-size: 26px;
+  color: #6E4FC8;
+}
+
+.info h4 {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.info p {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: 2px;
+  color: #5E5D5D;
+}
+
+.info img {
+  width: 18px;
+  height: 18px;
+}
+
+.match-description {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.match-description div {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
+  margin-left: 3px;
+}
+
+.results {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 70%;
+}
+
+.section-list {
+  width: 80%;
+  height: 85%;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.section-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.section-list::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 30px;
+}
+
+.section-list::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 30px;
+}
+
+.results h4 {
+  margin-bottom: 10px;
+  font-family: "Sora";
+  font-size: 20px;
+  color: #6E4FC8;
+  font-weight: 700;
+}
+
+.question-container {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  width: 99%;
+  gap: 10px;
+}
+
+.report-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.result {
+  border: 2px solid #cfcfcf;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.result div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.result .percentage {
+  font-family: "Montserrat";
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: black;
+}
+
+.result span {
+  font-weight: 700;
+}
+
+.result img {
+  height: 100%;
+  width: 11%;
+}
+
+.checkmark {
+  color: white;
+  font-size: 20px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.content-container .question {
+  font-family: "Montserrat";
+  font-weight: bold;
+}
+
+.content-container .answer {
+  font-family: "Montserrat";
+  font-weight: 500;
+  color: #575757;
+}
+
+.questions-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.questions-list li {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  color: #333;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: 14%;
+  text-align: center;
+}
+
+.exit-btn {
+  padding: 10px 20px;
+  background-color: #888;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  min-width: 8%;
+  font-family: "Sora";
+  font-weight: 600;
+}
+
+.exit-btn:hover {
+  background-color: #555;
+}
+
+main{
+  margin-left: 6vw;
+  background-color: #e8e2ee;
+}

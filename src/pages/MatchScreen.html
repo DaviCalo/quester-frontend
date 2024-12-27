@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partida</title>
+    <link rel="stylesheet" href="../styles/match.css">
+    <script type="module" src="../scripts/MatchScrpt.js" defer></script>
+    <link rel="icon" href="../../assets/icon/new-logo-quester.svg" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div id="main-top">
+            <img src="../../assets/icon/new-long-logo.svg" alt="" id="logo-quester">
+            <img src="../../assets/icon/Question.svg" alt="" id="icon-pergunta">
+        </div>
+        <div id="main-tittle">
+            <h1 id="main-tittle-h1">Partida em espera</h1>
+        </div>
+        <div id="main-content">
+            <div id="main-content-left">
+
+                <div id="main-content-left-top">
+                    <span id="number-player">0</span>/<span id="number-all-player">0</span>
+                    <img src="../../assets/icon/Person.svg" alt="" id="icon-person">
+                </div>
+
+                <div id="main-content-left-middle">
+                    <!-- <div class="card-player">
+                        <span class="position-player">0</span>
+                        <img src="./Ellipse 17.png" alt="" class="icon-player" id="icon-player">
+                        <span class="name-player">Nome do jogador</span>
+                        <span class="points">0pts</span>
+                    </div> -->
+                    <!-- <div class="card-player">
+                        <span id="position-player" class="position-card-player">1</span>
+                        <img src="../../assets/img/Ellipse 13.png" alt="" class="img-card-player" id="teste">
+                        <div class="text-card-player">
+                            <span >Davi Calô</span>
+                            <span>100 pts</span>
+                        </div>
+                    </div> -->
+                </div>
+
+                <div id="main-content-left-bottom">
+                    <span>Pontos totais:</span>
+                    <span id="all-points">0</span>
+                </div>
+
+            </div>
+
+            <div id="main-content-middle-init">
+                <span class="pin-match">
+                    PIN: <span id="pin-match">B9ED89</span>
+                </span>
+                <div class="information-match">
+                    <span id="title-match">Título da partida</span>
+                    <span id="question-amount">8 quetões</span>
+                    <span id="question-timer">30 seg. por questão</span>
+                </div>
+                <div class="information-match" id="text-wait-match">
+                    <span>Inicie a partida quando quiser</span>
+                </div>
+                <div>
+                    <button id="init-match">Iniciar</button>
+                </div>
+            </div>
+
+
+            <!--  Questão  -->
+            <div id="main-content-middle-question">
+                <div id="question-div">
+                    <div id="after-question-div">
+                        0/0
+                    </div>
+                    <div id="question-div-top">
+                        <span id="text-question"></span>
+                    </div>
+
+                    <!-- Questão de múltipla escolha -->
+                    <div id="question-multi-div-middle">
+                        <div class="question-multi" id="question-multi-fisrt">
+                           first
+                        </div>
+                        <div  class="question-multi" id="question-multi-second">
+                            second
+                        </div>
+                        <div  class="question-multi" id="question-multi-third">
+                            third
+                        </div>
+                        <div  class="question-multi"  id="question-multi-fourth">
+                            fourth
+                        </div>
+                    </div>
+                    <!-- Questão de múltipla escolha -->
+
+                    <!-- Questão Aberta -->
+                    <div id="question-div-middle">
+                        <!-- <div class="question-user-container">
+                            <div class="question-user-content">
+                                <span>Design de interação</span>
+                            </div>
+                        </div>
+                        <div class="question-correct-container">
+                            <div class="question-correct-content">
+                                <span>Fábio acertou!</span>
+                            </div>
+                        </div>
+                        <div class="question-incorrect-container">
+                            <div class="question-incorrect-content">
+                                <span class="question-incorrect-content-name">Luci</span>
+                                <span class="question-incorrect-content-message">Fábio acertou!</span>
+                            </div>
+                        </div> -->
+                    </div>
+                    
+                    <div id="question-div-bottom">
+                        <div id="label-input-question">
+                            <input type="text" id="input-question" name="input-question" placeholder="Digite sua resposta" autocomplete="off">
+                            <button id="send-question">
+                                <img src="../../assets/icon/Send.svg" alt="">
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Questão Aberta -->
+                </div>
+                <div id="timer-div">
+                    <div id="timer-total">
+                        <div id="timer-current"></div>
+                    </div>
+                    <span id="timer-question">00:00</span>
+                </div>
+            </div>
+
+            <div id="main-content-right">
+                <div id="main-content-right-top">
+                    <span>CHAT</span>
+                </div>
+
+                <div id="main-content-right-middle">
+                    <div class="message-player-container">
+                        <div class="message-content">
+                            <span class="name-user">Quester</span>
+                            <span class="messages">Converse com os outros participantes por aqui 💡 </span>
+                        </div>
+                    </div>
+                    <!-- <div class="message-user-container">
+                        <div class="message-content">
+                            <span class="messages">Mensagem</span>
+                        </div>
+                    </div> -->
+                </div>
+
+                <div id="main-content-right-bottom">
+                    <div id="label-input">
+                        <input type="text" id="input-message" placeholder="Digite sua mensagem" autocomplete="off">
+                        <button id="send-message">
+                            <img src="../../assets/icon/Send.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="main-content-right-no-chat">
+                <img src="../../assets/img/mascote-no-chat.png" alt="" id="no-cht-img">
+            </div>
+        </div>
+    </main>
+    <div id="load">
+        <img src="../../assets/img/mascote-load.png" alt="">
+    </div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./assets/icon/new-logo-quester.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="./src/styles/login.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <header>
+        <nav>
+          <ul>
+            <li>
+              <a href="#">
+                <img src="./assets/icon/new-long-logo.svg" alt="" />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="./assets/icon/interrogacao.svg" alt="" />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <div class="container-mascot container-settings">
+          <div class="image-mascot">
+            <img src="./assets/img/quester-login.png" alt="">
+          </div>
+          <!-- <div class="points">
+            <div class="point selected"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+          </div> -->
+        </div>
+        <div class="login-container container-settings">
+          <div class="login-box">
+            <form id="loginForm">
+              <h2>Login</h2>
+              <div class="input-box">
+                <label for="email">E-mail</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="email"
+                  name="email"
+                  placeholder="E-mail institucional"
+                  autocomplete="email"
+                  required
+                />
+                <i class="material-icons">email</i>
+              </div>
+              <div class="input-box">
+                <label for="password">Senha</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="8 caracteres"
+                  required
+                />
+                <i class="material-icons">lock</i>
+              </div>
+              <div id="email-error" class="error-message"></div>
+              <button type="submit">Entrar</button>
+            </form>
+
+            <div class="register-link">
+              <p>
+                Não tem conta? <a href="../frontend/src/pages/register.html">Cadastre-se</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+              const userId = localStorage.getItem("userId");
+              const occupation = localStorage.getItem("occupation");
+
+              if (userId && occupation) {
+                if (occupation === "STUDENT") {
+                  window.location.href = "./src/pages/alunoHome.html";
+                } else if (occupation === "TEACHER") {
+                  window.location.href = "./src/pages/partidasGuardadasTeacher.html";
+                }
+              }
+      });
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault(); // Previne o envio padrão do formulário
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          try {
+            const response = await fetch("http://localhost:3000/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              // A resposta contém a ocupação e o _id do usuário
+              const occupation = data.occupation;
+              const userId = data._id;
+
+              // Salvar o userId e a occupation no localStorage
+              localStorage.setItem("userId", userId);
+              localStorage.setItem("occupation", occupation);
+
+              // Redirecionar com base na ocupação
+              if (occupation === "STUDENT") {
+                window.location.href = "./src/pages/alunoHome.html";
+              } else if (occupation === "TEACHER") {
+                window.location.href = "./src/pages/partidasGuardadasTeacher.html";
+              }
+            } else {
+              document.getElementById("email-error").textContent =
+                "Email ou senha invalido" || "Erro ao fazer login";
+            }
+          } catch (error) {
+            console.error("Erro:", error);
+            document.getElementById("email-error").textContent =
+              "Erro ao fazer login";
+          }
+        });
+    </script>
+  </body>
+</html>

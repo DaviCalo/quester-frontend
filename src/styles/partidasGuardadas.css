@@ -1,0 +1,464 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap");
+
+/* Reset e configurações iniciais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Sora", sans-serif;
+  background: #e8e2ee;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  min-width: 320px; /* Garantir mínimo para dispositivos móveis */
+  overflow: hidden;
+}
+
+.container-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+#profile-photo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 5vw;
+  min-width: 50px;
+  height: 100%;
+  background-color: #f8f8f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2vh 0;
+  transition: width 0.3s ease;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidebar-item {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.sidebar-item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-icon {
+  background-color: #d9d9d9;
+  width: 80%;
+  height: 15%;
+  border-radius: 10px;
+}
+
+.select-icon::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 5px;
+  border-radius: 10px;
+  background-color: #00bfa6;
+}
+
+.menu:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+}
+
+.menu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 3px;
+  border-radius: 50px;
+  background-color: transparent;
+  transition: background-color 0.3s, top 0.3s;
+}
+
+.menu:hover::before {
+  background-color: #ff8c40;
+}
+
+.user-option {
+  width: 100%;
+  padding: 0 1em;
+  margin: 1em auto;
+  cursor: pointer;
+}
+
+main {
+  padding: 2vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  margin-left: 6vw; /* Espaço flexível baseado no tamanho da sidebar */
+  transition: margin-left 0.3s ease;
+}
+
+.titulo-partidas-guardadas {
+  width: 100%;
+  padding: 0 10.5vw;
+  margin: 20px 0;
+  text-align: start;
+  color: #6e4fc8;
+}
+
+.top-bar {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.selects {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.ordenar {
+  display: flex;
+}
+
+.top-bar select {
+  width: 30%;
+  padding: 0 10px;
+  height: 52px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #333;
+  outline: none;
+  font-weight: 500;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.top-bar input {
+  width: 50%;
+  padding: 15px 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #333;
+  outline: none;
+  font-weight: 500;
+  font-family: "Montserrat";
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.partidas-guardadas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dois cards por linha */
+  gap: 20px; /* Espaço entre os cards */
+  width: 80%;
+  padding: 20px;
+  justify-items: center;
+}
+.card-partida-guardada {
+  width: 100%;
+}
+.conteudo-card {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 10px 10px 0 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 10px;
+}
+
+.botoes {
+  display: flex;
+  width: 100%;
+  gap: 1px;
+}
+.botoes span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  padding: 15px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: ease-out 500ms;
+}
+
+.botoes .iniciar {
+  width: 40%;
+  border-radius: 0 0 0 10px;
+  background-color: #ff6600;
+}
+.botoes .editar {
+  width: 40%;
+  border-radius: 0;
+  background-color: white;
+  color: #ff6600;
+}
+.botoes .deletar {
+  width: 20%;
+  border-radius: 0 0 10px 0;
+  background-color: white;
+  color: #ff6600;
+}
+
+.botoes .duplicar {
+  width: 20%;
+  border-radius: 0 0 0 0;
+  background-color: white;
+  color: #ff6600;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.cancelar {
+  background-color: #ccc;
+}
+
+.excluir {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.erro {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.modal-editar {
+  display: flex; /* Centraliza o modal na tela */
+  position: fixed; /* Fixa o modal na tela */
+  z-index: 1000; /* Garante que o modal fique acima de outros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Largura total da tela */
+  height: 100%; /* Altura total da tela */
+  overflow: auto; /* Permite rolagem se necessário */
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+}
+
+.modal-content {
+  background-color: #fefefe; /* Fundo do modal */
+  margin: auto; /* Centraliza o modal */
+  padding: 20px; /* Espaçamento interno */
+  border: 1px solid #888; /* Borda do modal */
+  width: 400px; /* Largura do modal */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3); /* Sombra do modal */
+}
+
+.close {
+  color: #aaa; /* Cor do botão de fechar */
+  float: right; /* Alinha o botão à direita */
+  font-size: 28px; /* Tamanho do botão de fechar */
+  font-weight: bold; /* Negrito */
+}
+
+.close:hover,
+.close:focus {
+  color: black; /* Cor do botão de fechar ao passar o mouse */
+  text-decoration: none; /* Remove sublinhado */
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+}
+
+h2 {
+  margin: 0 0 10px; /* Margem do título */
+}
+
+label {
+  display: block; /* Faz o label ocupar toda a linha */
+  margin: 10px 0 5px; /* Margens do label */
+}
+
+input[type="text"] {
+  width: 100%; /* Largura total do input */
+  padding: 10px; /* Espaçamento interno do input */
+  margin-bottom: 10px; /* Margem inferior */
+  border: 1px solid #ccc; /* Borda do input */
+  border-radius: 4px; /* Bordas arredondadas */
+  box-sizing: border-box; /* Inclui padding e bordas na largura total */
+}
+
+ button {
+  background-color: #e65c00; /* Cor do botão */
+  color: white; /* Cor do texto do botão */
+  padding: 10px 15px; /* Espaçamento interno do botão */
+  border: none; /* Remove a borda do botão */
+  border-radius: 4px; /* Bordas arredondadas do botão */
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+  font-size: 16px; /* Tamanho da fonte do botão */
+}
+
+
+
+.sem-partidas {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.sem-partidas .container-mascote {
+  margin: 20px 0;
+}
+
+.container-mascote h2 {
+  color: #6e4fc8;
+  font-family: "Sora";
+  font-size: 36px;
+}
+
+.container-mascote p {
+  font-size: 32px;
+  color: #6e4fc8;
+  font-weight: 300;
+  font-family: "Sora";
+}
+
+.crie-partida {
+  display: inline-block; /* Exibe como bloco inline */
+  padding: 12px 24px; /* Espaçamento interno */
+  background-color: #ff6600; /* Cor de fundo (laranja) */
+  color: white; /* Cor do texto (branca) */
+  font-size: 24px; /* Tamanho da fonte */
+  font-weight: bold; /* Texto em negrito */
+  text-align: center; /* Alinha o texto ao centro */
+  border-radius: 8px; /* Bordas arredondadas */
+  cursor: pointer; /* Aparece como botão no hover */
+  transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);; /* Sombra leve para efeito 3D */
+  margin-top: 50px;
+}
+.crie-partida:hover {
+  background-color: #e65c00; /* Cor de fundo um pouco mais escura ao passar o mouse */
+}
+
+.container-texto-imagem {
+  position: relative; /* Define o contêiner como referência para posicionamento absoluto */
+  width: fit-content; /* Define que o contêiner ajuste ao tamanho do conteúdo (a imagem) */
+  margin: 0 auto;
+}
+
+.balao-img {
+  display: block;
+  width: 100%; /* Ajuste o tamanho conforme necessário */
+  height: auto;
+}
+
+.texto-sobre-balao {
+  position: absolute; /* Posiciona o texto sobre a imagem */
+  top: 45%; /* Ajuste conforme necessário */
+  left: 50%; /* Ajuste conforme necessário */
+  transform: translate(-50%, -50%); /* Centraliza o texto */
+  text-align: center;
+  color: #000; /* Cor do texto */
+  font-size: 16px; /* Tamanho do texto */
+  width: 60%; /* Largura do texto dentro do balão */
+}
+
+.texto-sobre-balao h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 30px; /* Tamanho do título */
+  color: #6e4fc8;
+  font-family: "Sora";
+}
+
+.texto-sobre-balao p {
+  margin: 10px 0 0;
+  font-size: 20px;
+  line-height: 1.4; /* Para ajustar a linha do texto */
+  color: #6e4fc8;
+  font-family: "Sora";
+}
+
+input[type="text"] {
+  padding-right: 40px; /* Espaçamento para evitar que o texto sobreponha o ícone */
+  width: 100%; /* Largura do input */
+}
+
+.icon-lupa {
+  position: absolute; /* Posiciona o ícone de forma absoluta */
+  right: 12vw; /* Distância do lado direito do input */
+  top: 11.6vh; /* Centraliza verticalmente em relação ao input */
+  transform: translateY(-50%); /* Ajusta a posição vertical para centralizar */
+  height: 20px; /* Ajuste a altura conforme necessário */
+  pointer-events: none; /* Ignora eventos de clique no ícone */
+}
