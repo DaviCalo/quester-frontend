@@ -3,7 +3,7 @@
 <h4>
 <p>Summary:</p>
  <a href="#about"><p>1. About</p></a> 
-  <a href="#interface"><p>2. interface</p></a>
+  <a href="#interface"><p>2. Interface</p></a>
  <a href="#prerequisite"><p>3. Prerequisite</p></a>
  <a href="#how-to-run"><p>4. How to Run</p></a>
 </h4>
@@ -34,5 +34,5 @@ Current Status: 🔴 In Development, needing refactoring.
 ```shell
 git clone https://github.com/DaviCalo/quester-frontend.git
 ```
-###Running the Frontend
+### Running the Frontend
 This project is under development and future updates will be made to the functioning of the project. Have a little patience, please 😁
