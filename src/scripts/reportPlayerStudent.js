@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 const setInformationMatch = async (idMatch) => {
-    const getInformationMatch = await fetch(`http://localhost:3000/match/${idMatch}`).then((response) => {
+    const getInformationMatch = await fetch(`https://quester-backend.onrender.com/match/${idMatch}`).then((response) => {
         return response.json();
     }).catch((error) => {
         console.error('Erro ao buscar informações do Match:', error);
@@ -112,7 +112,7 @@ function capitalizeFirstLetter(word) {
 
 const getPhoto = async (idUSer) => {    
     try {
-        const response = await fetch(`http://localhost:3000/profile-photo/${idUSer}`, {
+        const response = await fetch(`https://quester-backend.onrender.com/profile-photo/${idUSer}`, {
         headers: {'Content-Type': 'multipart/form-data',},
     });
         if (response.ok) {

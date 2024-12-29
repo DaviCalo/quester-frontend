@@ -119,6 +119,7 @@
       </div>
     </main>
     <script>
+      const token = localStorage.getItem("token");
       document.addEventListener("DOMContentLoaded", async function () {
         const userId = localStorage.getItem("userId");
         const setphoto = await getPhoto(userId);
@@ -131,8 +132,9 @@
       async function fetchMatchesHistory(userId) {
         try {
           const response = await fetch(
-            `http://localhost:3000/match/history/${userId}`
-          );
+            `https://quester-backend.onrender.com/match/history/${userId}`, {
+            headers: { 'Content-Type': 'multipart/form-data',  "Authorization": `Bearer ${token}`, },
+          });
           if (!response.ok) {
             throw new Error("Erro ao buscar o histórico de partidas");
           }
@@ -322,8 +324,8 @@
       const getPhoto = async (idUSer) => {
         console.log(idUSer);
     try {
-        const response = await fetch(`http://localhost:3000/profile-photo/${idUSer}`, {
-            headers: { 'Content-Type': 'multipart/form-data', },
+        const response = await fetch(`https://quester-backend.onrender.com/profile-photo/${idUSer}`, {
+            headers: { 'Content-Type': 'multipart/form-data',  "Authorization": `Bearer ${token}`, },
         });
         if (response.ok) {
             const blob = await response.blob();

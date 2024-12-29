@@ -179,6 +179,8 @@
       const alternativas = document.getElementById("alternativas");
       const pesquisaTagInput = document.getElementById("pesquisaTag");
 
+      const token = localStorage.getItem("token");
+
       // Alterna o tipo de pergunta (resposta curta ou alternativas)
       selecionaTipo.addEventListener("change", function () {
         const tipoPergunta = selecionaTipo.value;
@@ -279,10 +281,11 @@
           };
 
           try {
-            const response = await fetch("http://localhost:3000/question", {
+            const response = await fetch("https://quester-backend.onrender.com/question", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
               },
               body: JSON.stringify(questionData),
             });
@@ -332,8 +335,8 @@
 
       const getPhoto = async (idUSer) => {    
     try {
-        const response = await fetch(`http://localhost:3000/profile-photo/${idUSer}`, {
-        headers: {'Content-Type': 'multipart/form-data',},
+        const response = await fetch(`https://quester-backend.onrender.com/profile-photo/${idUSer}`, {
+        headers: {'Content-Type': 'multipart/form-data', 'Authorization': `Bearer ${token}`},
     });
         if (response.ok) {
             const blob = await response.blob();
@@ -355,11 +358,12 @@
 
         try {
           const response = await fetch(
-            `http://localhost:3000/question/${userId}`,
+            `https://quester-backend.onrender.com/question/${userId}`,
             {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
               },
             }
           );
@@ -472,10 +476,11 @@
         };
 
         try {
-          const response = await fetch("http://localhost:3000/match", {
+          const response = await fetch("https://quester-backend.onrender.com/match", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`,
             },
             body: JSON.stringify(matchData),
           });
@@ -537,10 +542,11 @@
         };
 
         try {
-          const response = await fetch("http://localhost:3000/waiting-match", {
+          const response = await fetch("https://quester-backend.onrender.com/waiting-match", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`,
             },
             body: JSON.stringify(matchData),
           });

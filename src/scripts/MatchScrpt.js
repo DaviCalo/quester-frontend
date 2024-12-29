@@ -155,7 +155,7 @@ const sendChatButton = document.getElementById('send-message').addEventListener(
 
 const getInformationUser = async (idUSer) => {
     try {
-        const response = await fetch(`http://localhost:3000/user`, {
+        const response = await fetch(`https://quester-backend.onrender.com/user`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json',},
             body: JSON.stringify({ _id: idUSer }),
@@ -203,7 +203,7 @@ const addMessage = (message) => {
 const getPhoto = async () => {    
     try {
         const idUSer = "66d4746961897cd2cb0ec33a"
-        const response = await fetch(`http://localhost:3000/profile-photo/${idUSer}`, {
+        const response = await fetch(`https://quester-backend.onrender.com/profile-photo/${idUSer}`, {
         headers: {'Content-Type': 'multipart/form-data',},
     });
         if (response.ok) {

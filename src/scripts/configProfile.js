@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const setphoto = await getPhoto(userId); 
 
   try {
-    const response = await fetch("http://localhost:3000/user", {
+    const response = await fetch("https://quester-backend.onrender.com/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     
   DeleteUserButton.addEventListener("click", async () => {
     try {
-      const response = await fetch(`http://localhost:3000/user/${userId}`, {
+      const response = await fetch(`https://quester-backend.onrender.com/user/${userId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -103,7 +103,7 @@ confirmButton.addEventListener("click", async (e) => {
     password: password.value,
   };
   try {
-    const response = await fetch("http://localhost:3000/user", {
+    const response = await fetch("https://quester-backend.onrender.com/user", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -119,7 +119,7 @@ confirmButton.addEventListener("click", async (e) => {
 
 const getPhoto = async (idUSer) => {    
   try {
-      const response = await fetch(`http://localhost:3000/profile-photo/${idUSer}`, {
+      const response = await fetch(`https://quester-backend.onrender.com/profile-photo/${idUSer}`, {
       headers: {'Content-Type': 'multipart/form-data',},
   });
       if (response.ok) {
@@ -153,7 +153,7 @@ inputImge.addEventListener("change", async function (e) {
   formData.append('profile-photo', inputImge.files[0]);
 
   try {
-      const response = await fetch(`http://localhost:3000/change-profile-photo/${localStorage.getItem("userId")}`, {
+      const response = await fetch(`https://quester-backend.onrender.com/change-profile-photo/${localStorage.getItem("userId")}`, {
           method: 'PUT',
           body: formData,
       });

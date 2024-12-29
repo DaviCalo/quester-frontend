@@ -217,6 +217,8 @@
       const OPEN = document.getElementById("OPEN");
       const alternativas = document.getElementById("alternativas");
 
+      const token = localStorage.getItem("token");
+
       // Alterna o tipo de pergunta (resposta curta ou alternativas)
       selecionaTipo.addEventListener("change", function () {
         const tipoPergunta = selecionaTipo.value;
@@ -329,10 +331,11 @@
           console.log(questionData);
 
           try {
-            const response = await fetch("http://localhost:3000/question", {
+            const response = await fetch("https://quester-backend.onrender.com/question", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
               },
               body: JSON.stringify(questionData),
             });
@@ -380,11 +383,12 @@
 
         try {
           const response = await fetch(
-            `http://localhost:3000/question/${userId}`,
+            `https://quester-backend.onrender.com/question/${userId}`,
             {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
               },
             }
           );
@@ -489,11 +493,12 @@
 
               try {
                 const response = await fetch(
-                  `http://localhost:3000/question/${userId}/${questionId}`,
+                  `https://quester-backend.onrender.com/question/${userId}/${questionId}`,
                   {
                     method: "DELETE",
                     headers: {
                       "Content-Type": "application/json",
+                      "Authorization": `Bearer ${token}`,
                     },
                   }
                 );
@@ -539,11 +544,12 @@
 
             try {
               const response = await fetch(
-                "http://localhost:3000/duplicate-question",
+                "https://quester-backend.onrender.com/duplicate-question",
                 {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
                   },
                   body: JSON.stringify(requestData),
                 }
@@ -655,11 +661,12 @@
       async function fetchQuestionData(questionId) {
         try {
           const response = await fetch(
-            `http://localhost:3000/question/find/${questionId}`,
+            `https://quester-backend.onrender.com/question/find/${questionId}`,
             {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
               },
             }
           );
@@ -812,10 +819,11 @@
 
           try {
             // Envia os dados da questão editada para o backend
-            const response = await fetch("http://localhost:3000/question", {
+            const response = await fetch("https://quester-backend.onrender.com/question", {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
               },
               body: JSON.stringify(updatedQuestionData),
             });
@@ -842,8 +850,8 @@
 
         const getPhoto = async (idUSer) => {
     try {
-        const response = await fetch(`http://localhost:3000/profile-photo/${idUSer}`, {
-            headers: { 'Content-Type': 'multipart/form-data', },
+        const response = await fetch(`https://quester-backend.onrender.com/profile-photo/${idUSer}`, {
+            headers: { 'Content-Type': 'multipart/form-data',  "Authorization": `Bearer ${token}`, },
         });
         if (response.ok) {
             const blob = await response.blob();

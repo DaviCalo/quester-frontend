@@ -1,16 +1,18 @@
 document.addEventListener("DOMContentLoaded", async function () {
     const userId = localStorage.getItem("userId");
     const occupation = localStorage.getItem("occupation");
+    const token = localStorage.getItem("token");
 
     const setphoto = await getPhoto(userId);
 
     if (userId && occupation) {
         try {
             // Fazer uma requisição para buscar as informações do usuário pelo userId
-            const response = await fetch("http://localhost:3000/user", {
+            const response = await fetch("https://quester-backend.onrender.com/user", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
                 },
                 body: JSON.stringify({ _id: userId }),
             });
@@ -50,9 +52,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
-            const response = await fetch(`http://localhost:3000/match/enter/${pin}`, {
+            const response = await fetch(`https://quester-backend.onrender.com/match/enter/${pin}`, {
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
                 },
             });
 
@@ -73,9 +76,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 const getPhoto = async (idUSer) => {
+    const token = localStorage.getItem("token");
     try {
-        const response = await fetch(`http://localhost:3000/profile-photo/${idUSer}`, {
-            headers: { 'Content-Type': 'multipart/form-data', },
+        const response = await fetch(`https://quester-backend.onrender.com/profile-photo/${idUSer}`, {
+            headers: { 
+                'Content-Type': 'multipart/form-data',
+                "Authorization": `Bearer ${token}`,
+            },
         });
         if (response.ok) {
             const blob = await response.blob();
