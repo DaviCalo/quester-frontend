@@ -3,11 +3,13 @@ import { removerPlayer } from './setMatchScript.js';
 import { initTimer } from './setMatchScript.js';
 import { updateRank } from './setMatchScript.js';
 
-
-const socket = new WebSocket('ws://localhost:8080');
+const socket = new WebSocket('wss://quester-web-socket.onrender.com');
 const idMatch = localStorage.getItem("matchId");
 const idUser = localStorage.getItem("userId");
 const playerRole = localStorage.getItem("matchRole");
+
+const token = localStorage.getItem("token");
+
 let dataUser = {
     _id: "",
     name: "",
@@ -33,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         textWaitMatch.textContent = 'Aguardando o início da partida';
     } else if(playerRole === "HOST"){
         initButton.addEventListener('click', () => {
-            socket.send(JSON.stringify({ type: 'init' }))
+            socket.send(JSON.stringify({ type: 'init', token: token}));
         })
     }
 
@@ -65,7 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
                socket.send(JSON.stringify(infomationUser))
             } else if(playerRole === "HOST"){
                 console.log(idMatch);
-                socket.send(JSON.stringify({ type: 'start', value: idMatch }))
+                socket.send(JSON.stringify({ type: 'start', value: {
+                    _id: idMatch,
+                    token: token  
+                }}))
             }
             console.log('Conectado ao servidor WebSocket' + dataUser.surname);
         })
@@ -157,7 +162,10 @@ const getInformationUser = async (idUSer) => {
     try {
         const response = await fetch(`https://quester-backend.onrender.com/user`, {
             method: 'POST',
-            headers: {'Content-Type': 'application/json',},
+            headers: {
+                'Content-Type': 'application/json', 
+                "Authorization": `Bearer ${token}`
+            },
             body: JSON.stringify({ _id: idUSer }),
         });
         if (response.ok) {
@@ -204,7 +212,7 @@ const getPhoto = async () => {
     try {
         const idUSer = "66d4746961897cd2cb0ec33a"
         const response = await fetch(`https://quester-backend.onrender.com/profile-photo/${idUSer}`, {
-        headers: {'Content-Type': 'multipart/form-data',},
+        headers: {'Content-Type': 'multipart/form-data', "Authorization": `Bearer ${token}`},
     });
         if (response.ok) {
             const blob = await response.blob();

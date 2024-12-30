@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("userId", data._id);
                 localStorage.setItem("token", data.token);
 
-                window.location.href = "./home.html";
+                window.location.href = "../pages/home.html";
             } else if (response.status === 409) {
                 messageDiv.textContent = "Email já registrado.";
                 messageDiv.style.color = "red";

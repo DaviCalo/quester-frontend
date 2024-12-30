@@ -1,7 +1,11 @@
 const playersData = [];
+const token = localStorage.getItem('token');
 
 export const setInformationMatch = async (idMatch) => {
-    const getInformationMatch = await fetch(`https://quester-backend.onrender.com/match/${idMatch}`).then((response) => {
+    const getInformationMatch = await fetch(`https://quester-backend.onrender.com/match/${idMatch}`, {
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
+        method: 'GET',
+    }).then((response) => {
         return response.json();
     }).catch((error) => {
         console.error('Erro ao buscar informações do Match:', error);
@@ -103,7 +107,7 @@ export const removerPlayer = (idPlayer) => {
 const getPhoto = async (idUSer) => {    
     try {
         const response = await fetch(`https://quester-backend.onrender.com/profile-photo/${idUSer}`, {
-        headers: {'Content-Type': 'multipart/form-data',},
+        headers: {'Content-Type': 'multipart/form-data', 'Authorization': `Bearer ${token}`},
     });
         if (response.ok) {
             const blob = await response.blob();
