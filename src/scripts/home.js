@@ -1,13 +1,10 @@
 document.addEventListener("DOMContentLoaded", async function () {
     const userId = localStorage.getItem("userId");
-    const occupation = localStorage.getItem("occupation");
     const token = localStorage.getItem("token");
+    await getPhoto(userId);
 
-    const setphoto = await getPhoto(userId);
-
-    if (userId && occupation) {
+    if (userId && token) {
         try {
-            // Fazer uma requisição para buscar as informações do usuário pelo userId
             const response = await fetch("https://quester-backend.onrender.com/user", {
                 method: "POST",
                 headers: {
@@ -16,11 +13,10 @@ document.addEventListener("DOMContentLoaded", async function () {
                 },
                 body: JSON.stringify({ _id: userId }),
             });
+
             if (response.ok) {
                 const userData = await response.json();
-                document.getElementById(
-                    "userName"
-                ).textContent = `${userData.surname}`;
+                document.getElementById("userName").textContent = `${userData.surname}`;
             } else {
                 localStorage.clear()
                 window.location.href = "../../index.html";
@@ -28,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         } catch (error) {
             console.error("Erro ao buscar informações do usuário:", error);
             localStorage.clear()
-            window.location.href = "../../index.html"; 
+            window.location.href = "../../index.html";
         }
     } else {
         localStorage.clear()
@@ -77,9 +73,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 const getPhoto = async (idUSer) => {
     const token = localStorage.getItem("token");
+
     try {
         const response = await fetch(`https://quester-backend.onrender.com/profile-photo/${idUSer}`, {
-            headers: { 
+            headers: {
                 'Content-Type': 'multipart/form-data',
                 "Authorization": `Bearer ${token}`,
             },

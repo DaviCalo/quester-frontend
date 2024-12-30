@@ -151,6 +151,7 @@ inputImge.addEventListener("change", async function (e) {
   e.preventDefault();
   const formData = new FormData();
   formData.append('profile-photo', inputImge.files[0]);
+  
 
   try {
       const response = await fetch(`https://quester-backend.onrender.com/change-profile-photo/${localStorage.getItem("userId")}`, {

@@ -34,12 +34,6 @@
           <div class="image-mascot">
             <img src="./assets/img/quester-login.png" alt="">
           </div>
-          <!-- <div class="points">
-            <div class="point selected"></div>
-            <div class="point"></div>
-            <div class="point"></div>
-            <div class="point"></div>
-          </div> -->
         </div>
         <div class="login-container container-settings">
           <div class="login-box">
@@ -82,67 +76,6 @@
         </div>
       </main>
     </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", async function () {
-              const userId = localStorage.getItem("userId");
-              const occupation = localStorage.getItem("occupation");
-              const token = localStorage.getItem("token");
-
-              if (userId && occupation) {
-                if (occupation === "STUDENT") {
-                  window.location.href = "./src/pages/alunoHome.html";
-                } else if (occupation === "TEACHER") {
-                  window.location.href = "./src/pages/partidasGuardadasTeacher.html";
-                }
-              }
-      });
-      document
-        .getElementById("loginForm")
-        .addEventListener("submit", async function (event) {
-          event.preventDefault(); // Previne o envio padrão do formulário
-
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
-
-          try {
-            const response = await fetch("https://quester-backend.onrender.com/login", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ email, password }),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-              // A resposta contém a ocupação e o _id do usuário
-              const occupation = data.occupation;
-              const userId = data._id;
-              const token = data.token;
-
-              // Salvar o userId e a occupation no localStorage
-              localStorage.setItem("userId", userId);
-              localStorage.setItem("occupation", occupation);
-              localStorage.setItem("token", token);
-
-              // Redirecionar com base na ocupação
-              if (occupation === "STUDENT") {
-                window.location.href = "./src/pages/alunoHome.html";
-              } else if (occupation === "TEACHER") {
-                window.location.href = "./src/pages/partidasGuardadasTeacher.html";
-              }
-            } else {
-              document.getElementById("email-error").textContent =
-                "Email ou senha invalido" || "Erro ao fazer login";
-            }
-          } catch (error) {
-            console.error("Erro:", error);
-            document.getElementById("email-error").textContent =
-              "Erro ao fazer login";
-          }
-        });
-    </script>
+    <script src="./src/scripts/login.js"></script>
   </body>
 </html>

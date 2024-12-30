@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/home.css" />
+  <link rel="icon" href="../../assets/icon/new-logo-quester.svg" type="image/x-icon" />
+  <title>Quester</title>
+</head>
+
+<body>
+  <nav class="sidebar">
+    <ul>
+      <li class="sidebar-item">
+        <a href="./home.html">
+          <img src="../../assets/icon/new-logo-quester.svg" alt="" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Entrar Partida">
+        <a href="./home.html">
+          <img src="../../assets/icon/play-select.svg" alt="Play" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Criar Partida">
+        <a href="./criarPartidaStudent.html">
+          <img src="../../assets/icon/add-square.svg" alt="Play" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Partidas Guardadas">
+        <a href="./partidasGuardadasStudent.html">
+          <img src="../../assets/icon/Grid.svg" alt="Lista de Questões" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Lista de Questões">
+        <a href="./lisQuestionStudent.html">
+          <img src="../../assets/icon/Text Bullet List Square.svg" alt="Lista de Questões" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Historico de Partidas">
+        <a href="historicoDePartidaStudent.html">
+          <img src="../../assets/icon/Document Copy.svg" alt="Historico de Partidas" />
+        </a>
+      </li>
+    </ul>
+    <ul>
+      <li class="user-option" title="Configuração de Perfil">
+        <a href="./configProfileStudent.html">
+          <img src="../../assets/icon/person-circle.svg" alt="Profile" id="profile-photo" />
+        </a>
+      </li>
+      <li class="user-option" title="Logout">
+        <a href="../../index.html" id="logout">
+          <img src="../../assets/icon/Arrow Exit.svg" alt="Logout" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1 class="title">Início</h1>
+    <div class="mascot-container container-settings">
+      <div class="mascot-image">
+        <img src="../../assets/img/mascoste-home-student.png" alt="" id="mascote">
+      </div>
+    </div>
+    <div class="match-section container-settings">
+      <h2>Bem-vindo, <span id="userName"></span>!</h2>
+      <div class="input-box">
+        <form action="">
+          <input type="number" name="pin" id="pin" placeholder="PIN" required class="no-spinner" />
+        </form>
+      </div>
+      <h3 class="button-menu" id="button-pin">Entrar</h3>
+    </div>
+  </main>
+  <script src="../scripts/home.js"></script>
+</body>
+
+</html>

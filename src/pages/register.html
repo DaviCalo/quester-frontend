@@ -1,247 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="../../assets/icon/new-logo-quester.svg" type="image/x-icon" />
-    <link rel="stylesheet" href="../styles/register.css" />
-    <title>Register</title>
-  </head>
-  <body>
-    <div class="main-container">
-      <header>
-        <nav>
-          <ul>
-            <li>
-              <a href="#"
-                ><img src="../../assets/icon/new-long-logo.svg" alt=""
-              /></a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="../../assets/icon/interrogacao.svg" alt=""
-              /></a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <main>
-        <div class="container-mascot container-settings">
-          <img src="../../assets/img/quester-login.png" alt="" id="mascote">
-          <!-- <div class="points">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="icon" href="../../assets/icon/new-logo-quester.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="../styles/register.css" />
+  <title>Register</title>
+</head>
+
+<body>
+  <div class="main-container">
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="#"><img src="../../assets/icon/new-long-logo.svg" alt="" /></a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="../../assets/icon/interrogacao.svg" alt="" /></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="container-mascot container-settings">
+        <img src="../../assets/img/quester-login.png" alt="" id="mascote">
+        <!-- <div class="points">
             <div class="point selected"></div>
             <div class="point"></div>
             <div class="point"></div>
             <div class="point"></div>
           </div> -->
-        </div>
-        <div class="login-container container-settings">
-          <div class="login-box">
-            <form id="registerForm">
-              <h2>Cadastro</h2>
-              <div class="input-names">
-                <div class="input-nome">
-                  <label for="nome">Nome</label>
-                  <input
-                    type="text"
-                    id="nome"
-                    class="nome"
-                    name="nome"
-                    placeholder="Natan"
-                    required
-                  />
-                  <i class="material-icons">person</i>
-                </div>
-
-                <div class="input-sobrenome">
-                  <label for="sobrenome">Sobrenome</label>
-                  <input
-                    type="text"
-                    id="sobrenome"
-                    class="sobrenome"
-                    name="sobrenome"
-                    placeholder="Gonçalves"
-                    required
-                  />
-                </div>
+      </div>
+      <div class="login-container container-settings">
+        <div class="login-box">
+          <form id="registerForm">
+            <h2>Cadastro</h2>
+            <div class="input-names">
+              <div class="input-nome">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" class="nome" name="nome" placeholder="Natan" required />
+                <i class="material-icons">person</i>
               </div>
-              <div id="nome-sobrenome-error" class="mensagem-erro"></div>
-              <div class="input-box">
-                <label for="user">User</label>
-                <input
-                  type="text"
-                  id="user"
-                  class="user"
-                  name="user"
-                  placeholder="Nattx00"
-                  required
-                />
-                <i class="material-icons">mood</i>
-                <!-- Mensagem de erro para Usuário -->
-              </div>
-              <div id="user-error" class="mensagem-erro"></div>
 
-              <div class="input-box">
-                <label for="email">E-mail</label>
-                <input
-                  type="text"
-                  id="email"
-                  class="email"
-                  name="email"
-                  placeholder="E-mail institucional"
-                  required
-                />
-                <i class="material-icons">mail</i>
-                <!-- Mensagem de erro para E-mail -->
+              <div class="input-sobrenome">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" id="sobrenome" class="sobrenome" name="sobrenome" placeholder="Gonçalves" required />
               </div>
-              <div id="email-error" class="mensagem-erro"></div>
-
-              <div class="input-box">
-                <label for="password">Senha</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="8 caracteres"
-                  required
-                />
-                <i class="material-icons">lock</i>
-                <!-- Mensagem de erro para Senha -->
-              </div>
-              <div id="password-error" class="mensagem-erro"></div>
-
-              <button type="submit">Cadastrar</button>
-            </form>
-            <div class="login-link">
-              <p>
-                Já está cadastrado? <a href="../../index.html">Faça seu log-in</a>
-              </p>
             </div>
+            <div id="nome-sobrenome-error" class="mensagem-erro"></div>
+            <div class="input-box">
+              <label for="user">User</label>
+              <input type="text" id="user" class="user" name="user" placeholder="Nattx00" required />
+              <i class="material-icons">mood</i>
+              <!-- Mensagem de erro para Usuário -->
+            </div>
+            <div id="user-error" class="mensagem-erro"></div>
+
+            <div class="input-box">
+              <label for="email">E-mail</label>
+              <input type="text" id="email" class="email" name="email" placeholder="E-mail institucional" required />
+              <i class="material-icons">mail</i>
+              <!-- Mensagem de erro para E-mail -->
+            </div>
+            <div id="email-error" class="mensagem-erro"></div>
+
+            <div class="input-box">
+              <label for="password">Senha</label>
+              <input type="password" id="password" name="password" placeholder="8 caracteres" required />
+              <i class="material-icons">lock</i>
+              <!-- Mensagem de erro para Senha -->
+            </div>
+            <div id="password-error" class="mensagem-erro"></div>
+
+            <button type="submit">Cadastrar</button>
+          </form>
+          <div class="login-link">
+            <p>
+              Já está cadastrado? <a href="../../index.html">Faça seu log-in</a>
+            </p>
           </div>
         </div>
-      </main>
-    </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("registerForm");
+      </div>
+    </main>
+  </div>
+  <script src="../scripts/register.js"></script>
+</body>
 
-        form.addEventListener("submit", async function (event) {
-          event.preventDefault();
-
-          let isValid = true;
-
-          const nomeInput = document.getElementById("nome");
-          const sobrenomeInput = document.getElementById("sobrenome");
-          const errorElement = document.getElementById("nome-sobrenome-error");
-
-          const pattern = /^[a-zA-Z\s]+$/; // Padrão comum para ambos
-
-          if (
-            nomeInput.value.length < 2 ||
-            !pattern.test(nomeInput.value) ||
-            sobrenomeInput.value.length < 2 ||
-            !pattern.test(sobrenomeInput.value)
-          ) {
-            errorElement.textContent =
-              "Nome e Sobrenome devem ter pelo menos 2 caracteres e conter apenas letras.";
-            isValid = false;
-          } else {
-            errorElement.textContent = "";
-          }
-
-          // Usuário
-          const userInput = document.getElementById("user");
-          const userError = document.getElementById("user-error");
-          if (userInput.value.length < 2) {
-            userError.textContent = "Usuário deve ter pelo menos 2 caracteres.";
-            isValid = false;
-          } else {
-            userError.textContent = "";
-          }
-
-          // E-mail
-          const emailInput = document.getElementById("email");
-          const emailError = document.getElementById("email-error");
-          const emailPattern =
-            /^[a-zA-Z0-9._%+-]+@(alu\.ufc\.br|virtual\.ufc\.br)$/;
-          if (!emailPattern.test(emailInput.value)) {
-            emailError.textContent =
-              'Por favor, insira um e-mail válido com domínio "alu.ufc.br" ou "virtual.ufc.br".';
-            isValid = false;
-          } else {
-            emailError.textContent = "";
-          }
-
-          // Senha
-          const passwordInput = document.getElementById("password");
-          const passwordError = document.getElementById("password-error");
-          if (passwordInput.value.length < 8) {
-            passwordError.textContent =
-              "Senha deve ter pelo menos 8 caracteres.";
-            isValid = false;
-          } else {
-            passwordError.textContent = "";
-          }
-
-          if (!isValid) {
-            return;
-          }
-
-          const userData = {
-            name: nomeInput.value,
-            last_name: sobrenomeInput.value,
-            surname: userInput.value,
-            email: emailInput.value,
-            password: passwordInput.value,
-          };
-
-          try {
-            const response = await fetch("https://quester-backend.onrender.com/signup", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(userData),
-            });
-
-            const data = await response.json();
-
-            const messageDiv = document.getElementById("message");
-            if (response.ok) {
-              // Armazenar o ID do usuário e a ocupação no localStorage
-              localStorage.setItem("userId", data._id);
-              localStorage.setItem(
-                "occupation",
-                data.occupation
-              );
-              localStorage.setItem("token", data.token);
-
-              // Redirecionar com base na ocupação
-              if (data.occupation == "TEACHER") {
-                window.location.href = "./partidasGuardadasTeacher.html";
-              } else if (data.occupation == "STUDENT") {
-                window.location.href = "./alunoHome.html";
-              }
-            } else if (response.status === 409) {
-              messageDiv.textContent = "Email já registrado.";
-              messageDiv.style.color = "red";
-            } else {
-              messageDiv.textContent = "Erro: " + data.error;
-              messageDiv.style.color = "red";
-            }
-          } catch (error) {
-
-            console.error("Erro na requisição:", error);
-            const messageDiv = document.getElementById("message");
-            messageDiv.textContent = "Erro na requisição.";
-            messageDiv.style.color = "red";
-          }
-        });
-      });
-    </script>
-  </body>
 </html>
