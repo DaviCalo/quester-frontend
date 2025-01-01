@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", async function () {
     const userId = localStorage.getItem("userId");
-    const occupation = localStorage.getItem("occupation");
+    const token = localStorage.getItem("token");
     let dataMatch = {};
-    if (!userId || !occupation) {
+    if (!userId || !token) {
         localStorage.removeItem("userId");
-        localStorage.removeItem("occupation");
+        localStorage.removeItem("token");
         window.location.href = "../../index.html";
     }
 
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const logoutButton = document.getElementById("logout");
         logoutButton.addEventListener("click", function () {
         localStorage.removeItem("userId");
-        localStorage.removeItem("occupation");
+        localStorage.removeItem("token");
     });
 });
 

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../../assets/icon/new-logo-quester.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="../styles/partidasGuardadas.css" />
+  <title>Partidas Guardadas</title>
+</head>
+
+<body>
+  <nav class="sidebar">
+    <ul>
+      <li class="sidebar-item">
+        <a href="./home.html">
+          <img src="../../assets/icon/new-logo-quester.svg" alt="" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Entrar Partida">
+        <a href="./home.html">
+          <img src="../../assets/icon/Play.svg" alt="Play" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Criar Partida">
+        <a href="./createMatch.html">
+          <img src="../../assets/icon/add-square.svg" alt="Play" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Partidas Guardadas">
+        <a href="./savedMatch.html">
+          <img src="../../assets/icon/icon-select-grid.svg" alt="Lista de Questões" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Lista de Questões">
+        <a href="./questions.html">
+          <img src="../../assets/icon/Text Bullet List Square.svg" alt="Lista de Questões" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Historico de Partidas">
+        <a href="history.html">
+          <img src="../../assets/icon/Document Copy.svg" alt="Historico de Partidas" />
+        </a>
+      </li>
+    </ul>
+    <ul>
+      <li class="user-option" title="Configuração de Perfil">
+        <a href="./configProfile.html">
+          <img src="../../assets/icon/person-circle.svg" alt="Profile" id="profile-photo" />
+        </a>
+      </li>
+      <li class="user-option" title="Logout">
+        <a href="../../index.html" id="logout">
+          <img src="../../assets/icon/Arrow Exit.svg" alt="Logout" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <h1 class="titulo-partidas-guardadas">Partidas Guardadas</h1>
+    <div class="top-bar container-settings">
+      <div class="selects">
+        <div class="ordenar">
+          <img src="../../assets/icon/Arrow Sort Down Lines.svg" alt="" />
+          <h3>Organizar:</h3>
+        </div>
+        <select name="filtroSemestre" id="filtroSemestre">
+          <option value="" disabled selected hidden>Semestres</option>
+          <option value="2024.1">2024.1</option>
+          <option value="2024.2">2024.2</option>
+        </select>
+      </div>
+      <input type="text" placeholder="Pesquise pelo título da partida" id="pesquisarPartida" />
+    </div>
+
+    <div class="partidas-guardadas container-settings" id="partidasContainer"></div>
+
+    <div class="sem-partidas container-settings" id="semPartidas" style="display: none">
+      <div class="container-mascote">
+        <img src="../../assets/img/confiante.svg" alt="" />
+        <div class="container-texto-imagem">
+        </div>
+
+        <span class="crie-partida" onclick="window.location.href='./createMatch.html'">Criar sua primeira partida</span>
+      </div>
+    </div>
+
+    <div id="mensagemErro" class="erro"></div>
+
+    <div id="confirmDeleteModal" class="modal">
+      <div class="modal-content">
+        <p>Tem certeza que deseja excluir a partida?</p>
+        <div class="modal-buttons">
+          <button class="cancelar">Cancelar</button>
+          <button class="excluir">Excluir</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="duplicateModal" class="modal-editar" style="display: none">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Duplicar Partida</h2>
+        <label for="matchName">Nome da Partida:</label>
+        <input type="text" id="matchName" placeholder="Insira o nome da partida" required />
+        <button class="duplicate-button" onclick="submitDuplicate()">
+          Duplicar
+        </button>
+      </div>
+    </div>
+  </main>
+  <script src="../scripts/savedMatch.js"></script>
+</body>
+
+</html>

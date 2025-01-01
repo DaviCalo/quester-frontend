@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Relatório de partida</title>
   <link rel="icon" href="../../assets/icon/new-logo-quester.svg" type="image/x-icon" />
-  <link rel="stylesheet" href="../styles/reportPlayer.css" />
+  <link rel="stylesheet" href="../styles/historicoPartida.css" />
+  <title>Histórico de Partidas</title>
 </head>
 
 <body>
@@ -56,48 +56,59 @@
       </li>
     </ul>
   </nav>
+  <main>
+    <h1 class="titulo-partidas-guardadas">Histórico de Partidas</h1>
+    <div class="top-bar container-settings">
+      <div class="selects">
+        <div class="ordenar">
+          <img src="../../assets/icon/Arrow Sort Down Lines.svg" alt="" />
+          <h3>Organizar:</h3>
+        </div>
+        <select name="filtroSemestre" id="filtroSemestre">
+          <option value="" disabled selected hidden>Semestres</option>
+          <option value="2024.1">2024.1</option>
+          <option value="2024.2">2024.2</option>
+        </select>
+      </div>
+      <input type="text" placeholder="Pesquise pelo título da partida" id="pesquisarPartida" />
+    </div>
 
-  <main class="content">
-    <header>
-      <h2>Relatório de Partida</h2>
-    </header>
-    <section class="interface-design">
-      <div class="info">
-        <div class="info-text">
-          <h2 id="name-match">Design de interface</h2>
-          <h4 id="description-match">Turma de Quarta</h4>
-        </div>
-        <div class="match-description">
-          <div>
-            <img src="../../assets/icon/calendar2.svg" />
-            <p id="timer-match">14/02/2024 - 13:00</p>
-          </div>
-          <div>
-            <img src="../../assets/icon/trophy.svg" alt="" />
-            <p id="position">Sua posição: 6°</p>
-          </div>
-          <div>
-            <img src="../../assets/icon/question circle2.svg" />
-            <p id="number-questions">10 questões</p>
-          </div>
-          <div>
-            <img src="../../assets/icon/clock icon2.svg" />
-            <p id="timer-questions">Tempo de questão: 30 seg.</p>
-          </div>
-          <div>
-            <img src="../../assets/icon/user icon2.svg" alt="" />
-            <p id="number-players">25 participantes</p>
+    <div class="sem-partidas container-settings" id="semPartidas" style="display: none">
+      <div class="container-mascote">
+        <img src="../../assets/img/confiante.svg" alt="" />
+        <div class="container-texto-imagem">
+          <img src="../../assets/img/caixaPerguntaPG.png" alt="Balão de Texto" class="balao-img" />
+          <div class="texto-sobre-balao">
+            <h2>Uau, que vazio...</h2>
+            <p>
+              Você ainda não possui nenhuma partida salva.<br />Que tal criar
+              sua primeira partida?
+            </p>
           </div>
         </div>
+
+        <span class="crie-partida" onclick="window.location.href='criarPartida.html'">Criar sua primeira partida</span>
       </div>
-    </section>
-    <section class="results">
-      <h4>Acertos e erros</h4>
-      <div class="section-list" id="section-list">
+    </div>
+
+    <div class="container-settings">
+      <div class="escolherHistorico">
+        <button id="toggleHost">Host</button>
+        <button id="toggleParticipante">Participante</button>
       </div>
-    </section>
+
+      <div class="historico-host historico-host2" style="display: none">
+        <div class="grid-container">
+        </div>
+      </div>
+
+      <div class="historico-participante" style="display: none">
+        <div class="grid-container">
+        </div>
+      </div>
+    </div>
   </main>
-  <script src="../scripts/reportPlayer.js"></script>
+  <script src="../scripts/history.js"></script>
 </body>
 
 </html>

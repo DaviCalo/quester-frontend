@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const logoutButton = document.getElementById("logout");
         logoutButton.addEventListener("click", function () {
         localStorage.removeItem("userId");
-        localStorage.removeItem("occupation");
+        localStorage.removeItem("token");
     });
 });
 

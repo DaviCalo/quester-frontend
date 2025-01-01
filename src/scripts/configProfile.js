@@ -9,6 +9,9 @@ const DeleteUserButton = document.getElementById("delete-user-button");
 const profilerCircle = document.getElementById("profile-circle");
 const inputImge = document.getElementById("imageUpload");
 
+const userId = localStorage.getItem("userId");
+const token = localStorage.getItem("token");
+
 iconButton.addEventListener("click", olhoSenha);
 
 function olhoSenha() {
@@ -37,12 +40,13 @@ function setDataUser(surname, nameUser, lastNameUser, emailUser, passwordUser) {
 
 document.addEventListener("DOMContentLoaded", async function () {
   const userId = localStorage.getItem("userId");
-  const occupation = localStorage.getItem("occupation");
+  const token = localStorage.getItem("token");
 
-  if (!userId || !occupation) {
+  if (!userId || !token) {
       localStorage.removeItem("userId");
-      localStorage.removeItem("occupation");
+      localStorage.removeItem("token");
       window.location.href = "../../index.html";
+      return;
   }
 
   const setphoto = await getPhoto(userId); 
@@ -52,6 +56,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify({ _id: userId }),
     });
@@ -79,11 +84,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
       });
       if (response.ok) {
         localStorage.removeItem("userId");
-        localStorage.removeItem("occupation");
+        localStorage.removeItem("token");
         window.location.href = "../../index.html";
       }
     } catch (error) {
@@ -107,6 +113,7 @@ confirmButton.addEventListener("click", async (e) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify(userUpdate),
     });
@@ -120,7 +127,7 @@ confirmButton.addEventListener("click", async (e) => {
 const getPhoto = async (idUSer) => {    
   try {
       const response = await fetch(`https://quester-backend.onrender.com/profile-photo/${idUSer}`, {
-      headers: {'Content-Type': 'multipart/form-data',},
+      headers: {'Content-Type': 'multipart/form-data', "Authorization": `Bearer ${token}`,},
   });
       if (response.ok) {
           const blob = await response.blob();
@@ -138,7 +145,7 @@ const getPhoto = async (idUSer) => {
 
 logoutButtonIcon.addEventListener("click", function () {
   localStorage.removeItem("userId");
-  localStorage.removeItem("occupation");
+  localStorage.removeItem("token");
   window.location.href = "../../index.html";
 });
 
@@ -150,13 +157,15 @@ profilerCircle.addEventListener("click", function (e) {
 inputImge.addEventListener("change", async function (e) {
   e.preventDefault();
   const formData = new FormData();
-  formData.append('profile-photo', inputImge.files[0]);
+  formData.append('profilePhoto', inputImge.files[0]);
   
-
   try {
       const response = await fetch(`https://quester-backend.onrender.com/change-profile-photo/${localStorage.getItem("userId")}`, {
           method: 'PUT',
           body: formData,
+          headers: {
+            'Authorization': `Bearer ${token}`,
+        },
       });
       if (response.ok) {
         const setphoto = await getPhoto(userId); 

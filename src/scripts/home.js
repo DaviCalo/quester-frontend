@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const userData = await response.json();
                 document.getElementById("userName").textContent = `${userData.surname}`;
             } else {
+                console.error("Erro ao buscar informações do usuário:", error);
                 localStorage.clear()
                 window.location.href = "../../index.html";
             }
         } catch (error) {
-            console.error("Erro ao buscar informações do usuário:", error);
             localStorage.clear()
             window.location.href = "../../index.html";
         }
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const logoutButton = document.getElementById("logout");
     logoutButton.addEventListener("click", function () {
         localStorage.removeItem("userId");
-        localStorage.removeItem("occupation");
+        localStorage.removeItem("token");
     });
 
     const buttonPin = document.getElementById("button-pin");
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const data = await response.json();
                 localStorage.setItem("matchId", data.id_match);
                 localStorage.setItem("matchRole", "PLAYER");
-                window.location.href = '../pages/MatchScreen.html';
+                window.location.href = '../pages/matchScreen.html';
             } else {
                 console.error("Erro na requisição:", error);
                 pinInput.style.border = "#ff0000 2px solid"
@@ -90,6 +90,7 @@ const getPhoto = async (idUSer) => {
             console.error('Erro ao enviar o arquivo:', response.statusText);
         }
     } catch (error) {
+        console.error("Usuário não autenticado");
         console.error('Erro na requisição:', error);
     }
 }

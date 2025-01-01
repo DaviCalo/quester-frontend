@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles/listaQuestoes.css" />
+  <link rel="icon" href="../../assets/icon/new-logo-quester.svg" type="image/x-icon" />
+  <title>Lista de Questão</title>
+</head>
+
+<body>
+  <nav class="sidebar">
+    <ul>
+      <li class="sidebar-item">
+        <a href="./home.html">
+          <img src="../../assets/icon/new-logo-quester.svg" alt="" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Entrar Partida">
+        <a href="./home.html">
+          <img src="../../assets/icon/Play.svg" alt="Play" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Criar Partida">
+        <a href="./createMatch.html">
+          <img src="../../assets/icon/add-square.svg" alt="Play" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Partidas Guardadas">
+        <a href="./savedMatch.html">
+          <img src="../../assets/icon/Grid.svg" alt="Lista de Questões" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Lista de Questões">
+        <a href="./questions.html">
+          <img src="../../assets/icon/icon-seleted-question.svg" alt="Lista de Questões" />
+        </a>
+      </li>
+      <li class="sidebar-item menu" title="Historico de Partidas">
+        <a href="history.html">
+          <img src="../../assets/icon/Document Copy.svg" alt="Historico de Partidas" />
+        </a>
+      </li>
+    </ul>
+    <ul>
+      <li class="user-option" title="Configuração de Perfil">
+        <a href="./configProfile.html">
+          <img src="../../assets/icon/person-circle.svg" alt="Profile" id="profile-photo" />
+        </a>
+      </li>
+      <li class="user-option" title="Logout">
+        <a href="../../index.html" id="logout">
+          <img src="../../assets/icon/Arrow Exit.svg" alt="Logout" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="fixed-box">
+      <img src="../../assets/icon/Add Circle.svg" alt="" id="criarQuestao" title="Criar Questão" />
+      <img src="../../assets/icon/bx_duplicate.svg" alt="" id="duplicarQuestao" title="Duplicar Questão" />
+      <img src="../../assets/icon/iconDelete.svg" alt="" id="excluirQuestao" title="Excluir Questão" />
+      <img src="../../assets/icon/iconEdit.svg" id="editarQuestao" title="Editar Questão" />
+    </div>
+    <h1 class="titulo">Lista de questões</h1>
+    <div class="container-settings top-bar">
+      <input type="text" id="pesquisaTag" placeholder="Pesquise por uma tag" />
+    </div>
+
+    <div class="container-settings questoes">
+      <div id="card" class="card-questao-aberta">
+        <div class="escolher-tipo-pergunta">
+          <input type="text" id="pergunta" class="pergunta-aberta" placeholder="Pergunta" />
+          <select name="tipoDePergunta" id="tipoDePergunta">
+            <optgroup label="Escolha o tipo da pergunta:">
+              <option value="OPEN" selected>Resposta Curta</option>
+              <option value="CLOSE">Alternativas</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div id="OPEN" class="resposta-curta">
+          <input type="text" class="resposta" placeholder="Resposta Curta" id="inputOPEN"
+            oninput="validateSingleWord(this)" />
+        </div>
+
+        <div id="alternativas" class="alternativas" style="display: none">
+          <div class="alternativa">
+            <input type="radio" name="alternativa" id="A" />
+            <input type="text" class="resposta" placeholder="Alternativa A" />
+          </div>
+          <div class="alternativa">
+            <input type="radio" name="alternativa" id="B" />
+            <input type="text" class="resposta" placeholder="Alternativa B" />
+          </div>
+          <div class="alternativa">
+            <input type="radio" name="alternativa" id="C" />
+            <input type="text" class="resposta" placeholder="Alternativa C" />
+          </div>
+          <div class="alternativa">
+            <input type="radio" name="alternativa" id="D" />
+            <input type="text" class="resposta" placeholder="Alternativa D" />
+          </div>
+        </div>
+        <div class="tags">
+          <h3>Tags:</h3>
+          <input type="text" class="criar-tag" />
+        </div>
+      </div>
+
+      <div id="questoesList" class="questoes-list"></div>
+    </div>
+
+    <div id="editQuestionModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Editar Questão</h2>
+        <div class="escolher-tipo-pergunta">
+          <input type="text" id="editPergunta" class="pergunta-aberta" placeholder="Pergunta" />
+          <select name="tipoDePergunta" id="editTipoPergunta">
+            <optgroup label="Escolha o tipo da pergunta:">
+              <option value="OPEN">Resposta Curta</option>
+              <option value="CLOSE">Alternativas</option>
+            </optgroup>
+          </select>
+        </div>
+        <div id="editOPEN" class="resposta-curta" style="display: none">
+          <input type="text" id="editResposta" class="resposta" placeholder="Resposta Curta" />
+        </div>
+        <div id="editAlternativas" class="alternativas" style="display: none">
+          <div class="alternativa">
+            <input type="radio" name="editAlternativa" id="editA" />
+            <input type="text" class="resposta" placeholder="Alternativa A" />
+          </div>
+          <div class="alternativa">
+            <input type="radio" name="editAlternativa" id="editB" />
+            <input type="text" class="resposta" placeholder="Alternativa B" />
+          </div>
+          <div class="alternativa">
+            <input type="radio" name="editAlternativa" id="editC" />
+            <input type="text" class="resposta" placeholder="Alternativa C" />
+          </div>
+          <div class="alternativa">
+            <input type="radio" name="editAlternativa" id="editD" />
+            <input type="text" class="resposta" placeholder="Alternativa D" />
+          </div>
+        </div>
+        <div class="tags">
+          <h3>Tags:</h3>
+          <input type="text" id="editTags" class="criar-tag" placeholder="Tags" />
+        </div>
+        <div class="editButton">
+          <button id="saveEditButton">Salvar Edição</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="deleteModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeDeleteModal()">&times;</span>
+        <h2>Confirmação de Exclusão</h2>
+        <p>Tem certeza que deseja excluir essa questão?</p>
+        <button onclick="confirmDelete()">Excluir</button>
+        <button onclick="closeDeleteModal()">Cancelar</button>
+      </div>
+    </div>
+  </main>
+  <script src="../scripts/questions.js"></script>
+</body>
+
+</html>

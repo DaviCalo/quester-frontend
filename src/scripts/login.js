@@ -26,12 +26,10 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         const data = await response.json();
 
         if (response.ok) {
-            const occupation = data.occupation;
             const userId = data._id;
             const token = data.token;
 
             localStorage.setItem("userId", userId);
-            localStorage.setItem("occupation", occupation);
             localStorage.setItem("token", token);
 
             window.location.href = "./src/pages/home.html";
